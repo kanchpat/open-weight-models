@@ -1,5 +1,8 @@
 # Part 2 (Nov 13, 2026): Start Serverless — Building Zero-Ops Open-Weight Agents on Vertex AI OpenMaaS
 
+> **Authored & Built by:** Kanchana Patlolla & Anusha Sabbineni · **With guidance from:** Alan Blount  
+> **⚠️ Unofficial Google Guide:** Independent practitioner guide — not an officially supported Google product or official Google Cloud documentation. Views expressed are the authors' own.
+
 **Stack & Models:** Vertex AI OpenMaaS (`Gemma 4 31B/26B`, `Qwen 3.8`, `DeepSeek-V4.1-Flash`)
 
 ## Overview

@@ -14,7 +14,6 @@ os.makedirs(ASSETS_DIR, exist_ok=True)
 os.makedirs(WP_DIR, exist_ok=True)
 os.makedirs(SERIES_DIR, exist_ok=True)
 
-# Load base64 images
 IMG_MAP = {
     "infographic_1_openness_spectrum.png": os.path.join(ASSETS_DIR, "infographic_1_openness_spectrum.png"),
     "infographic_2_ecosystem_stack.png": os.path.join(ASSETS_DIR, "infographic_2_ecosystem_stack.png"),
@@ -45,6 +44,12 @@ with open(os.path.join(WP_DIR, "enterprise-playbook.md"), "r", encoding="utf-8")
 ent_md_clean = sanitize_external(ent_md_raw)
 tech_md_clean = ""
 
+ent_md_html_src = "\n".join(
+    ln for ln in ent_md_clean.splitlines()
+    if not ln.startswith("**Authored & Built by:**")
+    and not ln.startswith("*Unofficial Google Cloud Practitioner Guide")
+)
+
 # Removed technical-deep-dive.md per user preference
 
 MODULES = [
@@ -60,7 +65,14 @@ for slug, title, surface, desc in MODULES:
     mdir = os.path.join(SERIES_DIR, slug)
     os.makedirs(mdir, exist_ok=True)
     with open(os.path.join(mdir, "README.md"), "w", encoding="utf-8") as f:
-        f.write(f"# {title}\n\n**Stack & Models:** {surface}\n\n## Overview\n{desc}\n\n*Code notebooks, Dockerfiles, and video walkthrough links unlock with the weekly Friday release.*\n")
+        f.write(
+            f"# {title}\n\n"
+            f"> **Authored & Built by:** Kanchana Patlolla & Anusha Sabbineni · **With guidance from:** Alan Blount  \n"
+            f"> **⚠️ Unofficial Google Guide:** Independent practitioner guide — not an officially supported Google product or official Google Cloud documentation. Views expressed are the authors' own.\n\n"
+            f"**Stack & Models:** {surface}\n\n"
+            f"## Overview\n{desc}\n\n"
+            f"*Code notebooks, Dockerfiles, and video walkthrough links unlock with the weekly Friday release.*\n"
+        )
 
 print("Scaffolded repo files and README.")
 
@@ -348,7 +360,7 @@ def md_to_html(md_text, inject_widgets=False, prefix=""):
         joined += "</div></details>"
     return joined
 
-ent_body_html = md_to_html(ent_md_clean, inject_widgets=True, prefix="")
+ent_body_html = md_to_html(ent_md_html_src, inject_widgets=True, prefix="")
 tech_body_html = md_to_html(tech_md_clean, inject_widgets=False, prefix="tech-")
 
 HTML_TEMPLATE = f"""<!DOCTYPE html>
@@ -356,7 +368,7 @@ HTML_TEMPLATE = f"""<!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Open-Weight AI Models for the Enterprise — Architect's Playbook &amp; Google Cloud Series</title>
+<title>Open-Weight AI Models on Google Cloud — Unofficial Enterprise Architect's Guide</title>
 <style>
   :root {{
     --bg-app: #FFFFFF;
@@ -591,6 +603,103 @@ HTML_TEMPLATE = f"""<!DOCTYPE html>
     border-radius: 999px;
     letter-spacing: 0.02em;
   }}
+  .gc-unofficial-badge {{
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #FFFBEB;
+    color: #92400E;
+    border: 1px solid #FCD34D;
+    font-family: var(--code);
+    font-size: 11.5px;
+    font-weight: 700;
+    padding: 4px 11px;
+    border-radius: 999px;
+    letter-spacing: 0.02em;
+  }}
+  .unofficial-top-ribbon {{
+    background: #FFFBEB;
+    border-bottom: 1px solid #FDE68A;
+    color: #78350F;
+    font-size: 12.5px;
+    line-height: 1.45;
+    padding: 8px clamp(20px, 4vw, 48px);
+    text-align: center;
+  }}
+  .unofficial-top-ribbon strong {{
+    color: #92400E;
+  }}
+  .author-credit-panel {{
+    background: #FFFFFF;
+    border: 1px solid #CBD5E1;
+    border-left: 4px solid #0B57D0;
+    border-radius: 12px;
+    padding: 13px 16px;
+    margin: 0 0 20px 0;
+    max-width: 64ch;
+    box-shadow: 0 4px 14px -6px rgba(15, 23, 42, 0.08);
+  }}
+  .author-credit-chips {{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+  }}
+  .author-chip {{
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #EFF6FF;
+    border: 1px solid #BFDBFE;
+    color: #1E3A8A;
+    font-size: 12.5px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 999px;
+  }}
+  .author-chip.guidance {{
+    background: #F8FAFC;
+    border-color: #CBD5E1;
+    color: #334155;
+  }}
+  .author-initials {{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #0B57D0;
+    color: #FFFFFF;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }}
+  .author-chip.guidance .author-initials {{
+    background: #475569;
+  }}
+  .author-disclaimer-line {{
+    font-size: 12px;
+    line-height: 1.45;
+    color: #475569;
+    padding-top: 7px;
+    border-top: 1px dashed #E2E8F0;
+  }}
+  .site-global-footer {{
+    border-top: 1px solid var(--border-subtle);
+    background: #F8FAFC;
+    padding: 26px clamp(20px, 4vw, 56px);
+    font-size: 13px;
+    color: #475569;
+  }}
+  .site-global-footer-inner {{
+    max-width: 1380px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }}
   .gc-live-badge {{
     display: inline-flex;
     align-items: center;
@@ -721,90 +830,155 @@ HTML_TEMPLATE = f"""<!DOCTYPE html>
     color: var(--text-muted);
   }}
 
-  /* 5 Key Enterprise Architect Questions Grid */
+  /* 5 Key Enterprise Architect Questions Grid (Visual Metric Bento) */
   .gc-questions-box {{
-    background: #FFFFFF;
-    border: 1px solid var(--border-subtle);
-    border-radius: 14px;
-    padding: 20px 22px;
-    box-shadow: 0 8px 24px -16px rgba(15, 23, 42, 0.10);
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(10px);
+    border: 1px solid #E2E8F0;
+    border-radius: 18px;
+    padding: 22px 24px;
+    box-shadow: 0 16px 36px -18px rgba(15, 23, 42, 0.12);
   }}
   .gc-sec-hdr {{
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
+    align-items: center;
     flex-wrap: wrap;
     gap: 8px;
-    margin-bottom: 14px;
+    margin-bottom: 16px;
   }}
   .gc-sec-hdr h2 {{
     margin: 0;
     padding: 0;
     border: none;
-    font-size: 19px;
-    font-weight: 600;
+    font-size: 18.5px;
+    font-weight: 700;
+    letter-spacing: -0.015em;
     color: var(--text-primary);
   }}
   .gc-sec-hdr span {{
-    font-size: 12.5px;
-    color: var(--text-muted);
+    font-size: 12px;
+    font-weight: 500;
+    color: #0B57D0;
+    background: #EFF6FF;
+    padding: 4px 10px;
+    border-radius: 999px;
   }}
   .gc-q-grid {{
     display: grid;
     grid-template-columns: repeat(5, minmax(0, 1fr));
-    gap: 12px;
+    gap: 14px;
   }}
   @media (max-width: 1180px) {{
-    .gc-q-grid {{ grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }}
+    .gc-q-grid {{ grid-template-columns: repeat(auto-fill, minmax(225px, 1fr)); }}
   }}
   .gc-q-card {{
-    background: #F8FAFC;
+    background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
     border: 1px solid #E2E8F0;
-    border-top: 3px solid #0B57D0;
-    border-radius: 10px;
-    padding: 13px 14px;
+    border-radius: 14px;
+    padding: 16px 15px 14px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     cursor: pointer;
-    transition: all 0.15s ease;
+    transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
     text-align: left;
+    position: relative;
+    overflow: hidden;
   }}
-  .gc-q-card:nth-child(2) {{ border-top-color: #16A34A; }}
-  .gc-q-card:nth-child(3) {{ border-top-color: #D97706; }}
-  .gc-q-card:nth-child(4) {{ border-top-color: #DC2626; }}
-  .gc-q-card:nth-child(5) {{ border-top-color: #7C3AED; }}
+  .gc-q-card::before {{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3.5px;
+    background: var(--q-accent, #0B57D0);
+  }}
   .gc-q-card:hover {{
-    background: #EFF6FF;
-    border-color: #93C5FD;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 16px -8px rgba(11, 87, 208, 0.20);
+    transform: translateY(-4px);
+    border-color: var(--q-accent, #0B57D0);
+    box-shadow: 0 14px 28px -12px rgba(15, 23, 42, 0.16);
+    background: #FFFFFF;
   }}
-  .gc-q-kicker {{
+  .gc-q-top {{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+  }}
+  .gc-q-icon {{
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: var(--q-bg, #EFF6FF);
+    color: var(--q-accent, #0B57D0);
+    display: grid;
+    place-items: center;
+  }}
+  .gc-q-icon svg {{
+    width: 19px;
+    height: 19px;
+  }}
+  .gc-q-num {{
     font-family: var(--code);
     font-size: 11px;
-    font-weight: 600;
-    color: #0B57D0;
-    text-transform: uppercase;
-    margin-bottom: 5px;
+    font-weight: 700;
+    color: var(--q-accent, #0B57D0);
+    background: var(--q-bg, #EFF6FF);
+    padding: 3px 8px;
+    border-radius: 999px;
   }}
   .gc-q-title {{
-    font-size: 13.5px;
-    font-weight: 600;
-    color: var(--text-primary);
-    line-height: 1.35;
-    margin-bottom: 6px;
-  }}
-  .gc-q-ans {{
-    font-size: 12px;
-    color: var(--text-secondary);
-    line-height: 1.42;
+    font-size: 15px;
+    font-weight: 700;
+    color: #0F172A;
+    line-height: 1.28;
     margin-bottom: 10px;
+    letter-spacing: -0.01em;
+  }}
+  .gc-q-stat {{
+    background: var(--q-bg, #EFF6FF);
+    border-radius: 9px;
+    padding: 8px 10px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 6px;
+  }}
+  .gc-q-stat strong {{
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--q-accent, #0B57D0);
+    letter-spacing: -0.02em;
+  }}
+  .gc-q-stat span {{
+    font-size: 11px;
+    font-weight: 600;
+    color: #475569;
+  }}
+  .gc-q-pills {{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-bottom: 12px;
+  }}
+  .gc-q-pill {{
+    font-family: var(--code);
+    font-size: 10.5px;
+    font-weight: 500;
+    background: #F1F5F9;
+    color: #334155;
+    padding: 2px 7px;
+    border-radius: 5px;
   }}
   .gc-q-foot {{
-    font-size: 11.5px;
-    font-weight: 600;
-    color: #0B57D0;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--q-accent, #0B57D0);
+    padding-top: 9px;
+    border-top: 1px solid #F1F5F9;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -1613,6 +1787,7 @@ HTML_TEMPLATE = f"""<!DOCTYPE html>
   <a href="#top" class="topbar-left" onclick="goHomeTop(); return false;" style="text-decoration:none; cursor:pointer;" title="Back to top of page">
     <span class="brand-mark">OW</span>
     <span class="brand-title">open-weights-playbook</span>
+    <span class="gc-unofficial-badge" style="font-size:10.5px;padding:2px 8px;" title="Independent community guide — not an officially supported Google product">Unofficial Guide</span>
   </a>
 
   <nav class="topbar-center" aria-label="Main">
@@ -1656,6 +1831,11 @@ HTML_TEMPLATE = f"""<!DOCTYPE html>
   </div>
 </header>
 
+<!-- PERSISTENT UNOFFICIAL GUIDE + AUTHORSHIP TOP RIBBON -->
+<div class="unofficial-top-ribbon" role="note" aria-label="Unofficial Guide Notice and Credits">
+  <strong>⚠️ Unofficial Google Cloud Practitioner Guide:</strong> Authored &amp; built by <strong>Kanchana Patlolla</strong> &amp; <strong>Anusha Sabbineni</strong>, with guidance from <strong>Alan Blount</strong>. Not an official Google or Google Cloud product, documentation site, or endorsement — views are the authors' own.
+</div>
+
 <!-- =========================================================
      VARIANT FIRST PAGE: GOOGLE CLOUD × OPEN-WEIGHT AI HERO
      + 5 KEY ARCHITECT QUESTIONS + ALL OPEN-WEIGHT MODELS
@@ -1665,15 +1845,26 @@ HTML_TEMPLATE = f"""<!DOCTYPE html>
     <div class="gc-split-grid">
       <div>
         <div class="gc-eyebrow-row">
-          <span class="gc-pill-badge">☁️ GOOGLE CLOUD × OPEN-WEIGHT AI</span>
+          <span class="gc-unofficial-badge">⚠️ UNOFFICIAL GOOGLE CLOUD GUIDE</span>
           <span class="gc-live-badge">● Living Playbook · Updated Nov 2026</span>
         </div>
         <h1 class="gc-hero-title">
           Enterprise Architect's Guide to <span class="hl">Open-Weight AI Models</span> on Google&nbsp;Cloud
         </h1>
         <p class="gc-hero-sub">
-          Open-weight models now power <strong>56% of enterprise gateway token volume at 14% of total spend</strong>. Before downloading a checkpoint or reserving GPUs, use this living playbook to answer the five questions every enterprise architect faces—and deploy each layer on <strong>Google Cloud</strong>.
+          Open-weight models now power <strong>56% of enterprise gateway token volume at 14% of total spend</strong>. Before downloading a checkpoint or reserving GPUs, use this unofficial practitioner playbook to answer the five questions every enterprise architect faces—with examples across Google Cloud.
         </p>
+        <div class="author-credit-panel">
+          <div class="author-credit-chips">
+            <span style="font-size:12px;font-weight:700;color:#0F172A;text-transform:uppercase;letter-spacing:0.04em;">Created by</span>
+            <span class="author-chip"><span class="author-initials">KP</span> Kanchana Patlolla</span>
+            <span class="author-chip"><span class="author-initials">AS</span> Anusha Sabbineni</span>
+            <span class="author-chip guidance"><span class="author-initials">AB</span> Guidance: Alan Blount</span>
+          </div>
+          <div class="author-disclaimer-line">
+            <strong>Unofficial Guide Disclaimer:</strong> Independent community &amp; practitioner resource — <strong>not</strong> an officially supported Google product, official Google Cloud documentation, or legal advice. All opinions and FinOps estimates are the authors' own.
+          </div>
+        </div>
         <div class="gc-cta-row">
           <a class="btn-pill-dark" href="#playbook-start" onclick="navToSection('view-enterprise', 'playbook-start'); return false;">
             Read Full Playbook <span aria-hidden="true">↓</span>
@@ -1713,56 +1904,124 @@ HTML_TEMPLATE = f"""<!DOCTYPE html>
       </div>
     </div>
 
-    <!-- 5 KEY ARCHITECT QUESTIONS (CLOUD × OPEN WEIGHTS) -->
+    <!-- 5 KEY ARCHITECT QUESTIONS (VISUAL METRIC BENTO) -->
     <div class="gc-questions-box" id="architect-questions">
       <div class="gc-sec-hdr">
-        <h2>❓ 5 Key Questions for Enterprise Architects: Google Cloud × Open Weights</h2>
-        <span>Click any question to jump directly to the analysis or interactive calculator</span>
+        <h2>5 Key Questions for Enterprise Architects</h2>
+        <span>Click any card to launch its calculator or blueprint ↓</span>
       </div>
       <div class="gc-q-grid">
-        <div class="gc-q-card" onclick="navToSection('view-enterprise', 'widget-license-inline')">
+        <!-- Q1 -->
+        <div class="gc-q-card" style="--q-accent:#0B57D0; --q-bg:#EFF6FF;" onclick="navToSection('view-enterprise', 'widget-license-inline')">
           <div>
-            <div class="gc-q-kicker">Q1 · Tiers &amp; Licensing</div>
-            <div class="gc-q-title">What are we actually downloading—and which licenses are safe at scale?</div>
-            <div class="gc-q-ans">Separate <strong>Tier 3 Open Weights</strong> from <strong>Tier 4 Full Open Source (Olmo 3)</strong>, and filter out <code>$10B</code> valuation, <code>100M</code> MAU &amp; <code>NC</code> LoRA traps.</div>
+            <div class="gc-q-top">
+              <div class="gc-q-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+              </div>
+              <span class="gc-q-num">01 · LICENSE</span>
+            </div>
+            <div class="gc-q-title">Which open-weight license is safe?</div>
+            <div class="gc-q-stat">
+              <strong>Tier 1–4</strong>
+              <span>Valuation &amp; MAU Caps</span>
+            </div>
+            <div class="gc-q-pills">
+              <span class="gc-q-pill">Apache 2.0</span>
+              <span class="gc-q-pill">$10B Gate</span>
+              <span class="gc-q-pill">Olmo 3</span>
+            </div>
           </div>
-          <div class="gc-q-foot"><span>§1–2 &amp; License Sliders</span><span>→</span></div>
+          <div class="gc-q-foot"><span>⚡ Try License Filter</span><span>→</span></div>
         </div>
 
-        <div class="gc-q-card" onclick="navToSection('view-enterprise', '4-2-high-roi-runtime-drivers-evolving-the-harness-system-1-models')">
+        <!-- Q2 -->
+        <div class="gc-q-card" style="--q-accent:#15803D; --q-bg:#ECFDF5;" onclick="navToSection('view-enterprise', '4-2-high-roi-runtime-drivers-evolving-the-harness-system-1-models')">
           <div>
-            <div class="gc-q-kicker" style="color:#15803D;">Q2 · Harnesses &amp; System 1</div>
-            <div class="gc-q-title">How do we gain +16.7pp accuracy &amp; 35× faster triage without retraining?</div>
-            <div class="gc-q-ans">Evolve the agent harness in <strong>Google ADK</strong> and offload classification to single-pass <strong>System 1 models (<code>output_tokens: 0</code>)</strong>.</div>
+            <div class="gc-q-top">
+              <div class="gc-q-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+              </div>
+              <span class="gc-q-num">02 · HARNESS</span>
+            </div>
+            <div class="gc-q-title">Train weights or evolve the harness?</div>
+            <div class="gc-q-stat">
+              <strong>+16.7pp</strong>
+              <span>35× Faster System 1</span>
+            </div>
+            <div class="gc-q-pills">
+              <span class="gc-q-pill">Google ADK</span>
+              <span class="gc-q-pill">output_tokens: 0</span>
+            </div>
           </div>
-          <div class="gc-q-foot" style="color:#15803D;"><span>§3.2 &amp; §4.2 Runtime Levers</span><span>→</span></div>
+          <div class="gc-q-foot"><span>Explore Harnesses</span><span>→</span></div>
         </div>
 
-        <div class="gc-q-card" onclick="navToSection('view-enterprise', '4-3-seven-enterprise-watch-outs-how-to-mitigate-them')">
+        <!-- Q3 -->
+        <div class="gc-q-card" style="--q-accent:#B45309; --q-bg:#FEF3C7;" onclick="navToSection('view-enterprise', '4-3-seven-enterprise-watch-outs-how-to-mitigate-them')">
           <div>
-            <div class="gc-q-kicker" style="color:#B45309;">Q3 · Security &amp; Sovereignty</div>
-            <div class="gc-q-title">How do we defend against $1,200 weight abliteration &amp; shadow models?</div>
-            <div class="gc-q-ans">Enforce <code>SHA-256</code> checkpoint pinning in <strong>Artifact Registry</strong>, air-gapped VPC execution, and <strong>Google Cloud Model Armor</strong>.</div>
+            <div class="gc-q-top">
+              <div class="gc-q-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              </div>
+              <span class="gc-q-num">03 · SECURITY</span>
+            </div>
+            <div class="gc-q-title">How do we lock down VPC &amp; weights?</div>
+            <div class="gc-q-stat">
+              <strong>SHA-256</strong>
+              <span>In-VPC Isolation</span>
+            </div>
+            <div class="gc-q-pills">
+              <span class="gc-q-pill">Artifact Registry</span>
+              <span class="gc-q-pill">Model Armor</span>
+            </div>
           </div>
-          <div class="gc-q-foot" style="color:#B45309;"><span>§4.3 Risk Watch-Outs</span><span>→</span></div>
+          <div class="gc-q-foot"><span>7 Risk Watch-Outs</span><span>→</span></div>
         </div>
 
-        <div class="gc-q-card" onclick="navToSection('view-enterprise', '5-industry-patterns-real-world-production-deployments')">
+        <!-- Q4 -->
+        <div class="gc-q-card" style="--q-accent:#DC2626; --q-bg:#FEE2E2;" onclick="navToSection('view-enterprise', '5-industry-patterns-real-world-production-deployments')">
           <div>
-            <div class="gc-q-kicker" style="color:#B91C1C;">Q4 · Industry Patterns</div>
-            <div class="gc-q-title">How are Netflix, Pinterest, Harvey, DoorDash, Coinbase &amp; Uber shipping?</div>
-            <div class="gc-q-ans">Inspect 5 production blueprints: prefill catalog rankers, vision grafts, rubric gates, <code>10×</code> distillation &amp; <code>&lt;$100</code> single-GPU <code>GRPO</code> RL.</div>
+            <div class="gc-q-top">
+              <div class="gc-q-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+              </div>
+              <span class="gc-q-num">04 · PATTERNS</span>
+            </div>
+            <div class="gc-q-title">Who is running this in production?</div>
+            <div class="gc-q-stat">
+              <strong>5 Patterns</strong>
+              <span>Up to 90% Cost Cut</span>
+            </div>
+            <div class="gc-q-pills">
+              <span class="gc-q-pill">Netflix</span>
+              <span class="gc-q-pill">Pinterest</span>
+              <span class="gc-q-pill">Harvey</span>
+              <span class="gc-q-pill">DoorDash</span>
+            </div>
           </div>
-          <div class="gc-q-foot" style="color:#B91C1C;"><span>§5 Industry Patterns (1–5)</span><span>→</span></div>
+          <div class="gc-q-foot"><span>Industry Patterns</span><span>→</span></div>
         </div>
 
-        <div class="gc-q-card" onclick="navToSection('view-enterprise', 'widget-tco-inline')">
+        <!-- Q5 -->
+        <div class="gc-q-card" style="--q-accent:#6D28D9; --q-bg:#F3E8FF;" onclick="navToSection('view-enterprise', 'widget-tco-inline')">
           <div>
-            <div class="gc-q-kicker" style="color:#6D28D9;">Q5 · FinOps &amp; Cloud Stack</div>
-            <div class="gc-q-title">When should we use serverless OpenMaaS vs. dedicated self-hosted GPUs?</div>
-            <div class="gc-q-ans">Dedicated GPUs cost <strong>1.42× more</strong> below a <strong>73% duty cycle</strong>. Start on <strong>Vertex AI OpenMaaS</strong> or <strong>Cloud Run scale-to-zero GPUs</strong>.</div>
+            <div class="gc-q-top">
+              <div class="gc-q-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>
+              </div>
+              <span class="gc-q-num">05 · FINOPS</span>
+            </div>
+            <div class="gc-q-title">Serverless OpenMaaS or dedicated GPUs?</div>
+            <div class="gc-q-stat">
+              <strong>73% Rule</strong>
+              <span>$0 Idle GPU Burn</span>
+            </div>
+            <div class="gc-q-pills">
+              <span class="gc-q-pill">OpenMaaS ($0.907)</span>
+              <span class="gc-q-pill">Cloud Run vLLM</span>
+            </div>
           </div>
-          <div class="gc-q-foot" style="color:#6D28D9;"><span>§6–7 &amp; FinOps Calculator</span><span>→</span></div>
+          <div class="gc-q-foot"><span>⚡ FinOps Calculator</span><span>→</span></div>
         </div>
       </div>
     </div>
@@ -1774,7 +2033,7 @@ HTML_TEMPLATE = f"""<!DOCTYPE html>
      ========================================================= -->
 <section class="models-dir-sec" id="models-directory-sec">
   <div class="gc-sec-hdr">
-    <h2>🧩 Open-Weight Models Covered in This Playbook &amp; Google Cloud Series</h2>
+    <h2>🧩 Open-Weight Models Covered in This Unofficial Guide &amp; Series</h2>
     <span>Filter by license, provenance tier, or Google Cloud deployment surface</span>
   </div>
   <div class="models-filter-bar">
@@ -1886,7 +2145,7 @@ HTML_TEMPLATE = f"""<!DOCTYPE html>
     <!-- VIEW 1: ENTERPRISE WHITEPAPER + INLINE INTERACTIVE TOOLKIT (DEFAULT) -->
     <div id="view-enterprise" class="view-section active">
       <div class="breadcrumbs">
-        <span>Enterprise Guides</span>
+        <span>Unofficial Practitioner Guides</span>
         <span>›</span>
         <span>Open-Weight AI Models</span>
         <span>›</span>
@@ -1894,10 +2153,17 @@ HTML_TEMPLATE = f"""<!DOCTYPE html>
       </div>
 
       <header class="whitepaper-header">
+        <div style="margin-bottom:10px;">
+          <span class="gc-unofficial-badge">⚠️ UNOFFICIAL GOOGLE CLOUD PRACTITIONER GUIDE · NOT AN OFFICIAL GOOGLE PRODUCT</span>
+        </div>
         <h1 class="whitepaper-title">Open-Weight AI Models for the Enterprise: An Architect's Guide to Strategy, Economics &amp; Production Patterns</h1>
-        <div class="whitepaper-sub">
-          <span><strong>Authors:</strong> Kanchana Patlolla &amp; Anusha Sabbineni · Google Cloud</span>
-          <span>Part 1 of 7 · Companion Playbook to the Google Cloud Code &amp; Video Series</span>
+        <div class="whitepaper-sub" style="display:flex;flex-direction:column;gap:6px;margin-top:10px;">
+          <div class="author-credit-chips" style="margin-bottom:2px;">
+            <span class="author-chip"><span class="author-initials">KP</span> Kanchana Patlolla</span>
+            <span class="author-chip"><span class="author-initials">AS</span> Anusha Sabbineni</span>
+            <span class="author-chip guidance"><span class="author-initials">AB</span> Guidance: Alan Blount</span>
+          </div>
+          <span>Part 1 of 7 · Unofficial Companion Playbook to the Community Code &amp; Video Series (Views expressed are the authors' own)</span>
         </div>
       </header>
 
@@ -1916,7 +2182,7 @@ HTML_TEMPLATE = f"""<!DOCTYPE html>
     <!-- VIEW 3: 7-PART CODE & VIDEO SERIES -->
     <div id="view-series" class="view-section">
       <div class="breadcrumbs">
-        <span>Enterprise Guides</span>
+        <span>Unofficial Practitioner Guides</span>
         <span>›</span>
         <span>Open-Weight AI Models</span>
         <span>›</span>
@@ -1924,10 +2190,17 @@ HTML_TEMPLATE = f"""<!DOCTYPE html>
       </div>
 
       <header class="whitepaper-header">
-        <h1 class="whitepaper-title">7-Part Google Cloud Open-Weight Models Blog, Video &amp; Code Series</h1>
-        <div class="whitepaper-sub">
-          <span><strong>Co-Authors:</strong> Kanchana Patlolla &amp; Anusha Sabbineni</span>
-          <span>Repository Structure: <code>whitepaper/</code> · <code>docs/</code> · <code>series/part-02..07/</code></span>
+        <div style="margin-bottom:10px;">
+          <span class="gc-unofficial-badge">⚠️ UNOFFICIAL GOOGLE CLOUD PRACTITIONER SERIES · NOT AN OFFICIAL GOOGLE PRODUCT</span>
+        </div>
+        <h1 class="whitepaper-title">7-Part Open-Weight Models Community Blog, Video &amp; Code Series (with Google Cloud Examples)</h1>
+        <div class="whitepaper-sub" style="display:flex;flex-direction:column;gap:6px;margin-top:10px;">
+          <div class="author-credit-chips" style="margin-bottom:2px;">
+            <span class="author-chip"><span class="author-initials">KP</span> Kanchana Patlolla</span>
+            <span class="author-chip"><span class="author-initials">AS</span> Anusha Sabbineni</span>
+            <span class="author-chip guidance"><span class="author-initials">AB</span> Guidance: Alan Blount</span>
+          </div>
+          <span>Unofficial community resource (views are the authors' own) · Repo: <code>whitepaper/</code> · <code>docs/</code> · <code>series/part-02..07/</code></span>
         </div>
       </header>
 
@@ -2010,9 +2283,19 @@ HTML_TEMPLATE = f"""<!DOCTYPE html>
 
   </main>
 
-
-
 </div>
+
+<footer class="site-global-footer">
+  <div class="site-global-footer-inner">
+    <div style="font-weight:600;color:#0F172A;">
+      ✍️ Authored &amp; Built by <strong>Kanchana Patlolla</strong> &amp; <strong>Anusha Sabbineni</strong> &nbsp;·&nbsp; With guidance from <strong>Alan Blount</strong> &nbsp;·&nbsp;
+      <a href="https://github.com/kanchpat/open-weight-models" target="_blank" rel="noopener">GitHub Repository (Apache 2.0) ↗</a>
+    </div>
+    <div>
+      <strong>⚠️ Unofficial Google / Google Cloud Guide Disclaimer:</strong> This website (<code>kanchpat.github.io/open-weight-models</code>) and companion repository are an independent, <strong>unofficial practitioner &amp; community guide</strong>. This is <strong>not</strong> an officially supported Google product, official Google Cloud documentation, or an official statement on behalf of Google LLC. All opinions, architectural recommendations, FinOps cost estimates, and model license summaries (provided for informational planning only and not legal advice) are strictly the authors' own.
+    </div>
+  </div>
+</footer>
 
 <script>
 const LICENSE_MODELS = [

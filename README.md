@@ -1,11 +1,13 @@
-# Google Cloud × Open-Weight AI Models: Enterprise Architect's Playbook & 7-Part Code Series
+# Open-Weight AI Models on Google Cloud — Unofficial Enterprise Architect's Guide & 7-Part Series
 
+[![Unofficial Guide](https://img.shields.io/badge/Notice-Unofficial%20Practitioner%20Guide-D97706?style=for-the-badge)](#disclaimer--attribution)
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live%20Interactive%20Playbook-0B57D0?style=for-the-badge&logo=googlecloud)](https://kanchpat.github.io/open-weight-models/)
 [![License](https://img.shields.io/badge/License-Apache%202.0-16A34A?style=for-the-badge)](https://opensource.org/licenses/Apache-2.0)
 
-> **Authored & Built by:** Kanchana Patlolla & Anusha Sabbineni · **With strategic & technical guidance from:** Alan Blount (Google Cloud)  
-> **Live Interactive Documentation & FinOps Toolkit:** **[https://kanchpat.github.io/open-weight-models/](https://kanchpat.github.io/open-weight-models/)**  
-> **Repository:** **[https://github.com/kanchpat/open-weight-models](https://github.com/kanchpat/open-weight-models)**
+> **✍️ Authored & Built by:** **Kanchana Patlolla** & **Anusha Sabbineni** · **With guidance from:** **Alan Blount**  
+> **⚠️ Unofficial Google Guide Disclaimer:** This repository and interactive companion site are an **unofficial community & practitioner guide** and are **not** an official Google or Google Cloud publication, documentation site, or an officially supported Google product. Views, architectural recommendations, FinOps cost models, and license summaries (not legal advice) are strictly the authors' own.  
+> **🌐 Live Interactive Playbook & FinOps Toolkit:** **[https://kanchpat.github.io/open-weight-models/](https://kanchpat.github.io/open-weight-models/)**  
+> **📦 Repository:** **[https://github.com/kanchpat/open-weight-models](https://github.com/kanchpat/open-weight-models)**
 
 ![Google Cloud x Open-Weight AI Models](docs/assets/hero_google_cloud_open_weights.jpg)
 
@@ -78,3 +80,11 @@ open-weight-models/
    - Your interactive site will publish at **`https://kanchpat.github.io/open-weight-models/`**.
 3. **Keep the Document Current:**
    - Edit `whitepaper/enterprise-playbook.md` and run `python3 scripts/build_github_pages.py` to regenerate `docs/index.html`, then commit and push.
+
+---
+
+## ⚠️ Disclaimer & Attribution
+
+- **Authors & Contributors:** Authored and built by **Kanchana Patlolla** and **Anusha Sabbineni**, with guidance from **Alan Blount**.
+- **Unofficial Google Guide:** This repository (`kanchpat/open-weight-models`) and companion website (`kanchpat.github.io/open-weight-models`) constitute an **unofficial community & practitioner guide**. **This is not an officially supported Google product**, nor is it an official Google or Google Cloud publication, documentation set, or endorsement.
+- **No Legal or Financial Advice:** All opinions, architectural recommendations, FinOps cost estimates, and model licensing summaries are provided *as-is* by the authors in an independent practitioner capacity for informational purposes only. Always consult qualified legal counsel before deploying open-weight models in commercial production.

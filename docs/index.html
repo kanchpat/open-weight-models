@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Open-Weight AI Models for the Enterprise — Architect's Playbook &amp; Google Cloud Series</title>
+<title>Open-Weight AI Models on Google Cloud — Unofficial Enterprise Architect's Guide</title>
 <style>
   :root {
     --bg-app: #FFFFFF;
@@ -237,6 +237,103 @@
     padding: 4px 11px;
     border-radius: 999px;
     letter-spacing: 0.02em;
+  }
+  .gc-unofficial-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #FFFBEB;
+    color: #92400E;
+    border: 1px solid #FCD34D;
+    font-family: var(--code);
+    font-size: 11.5px;
+    font-weight: 700;
+    padding: 4px 11px;
+    border-radius: 999px;
+    letter-spacing: 0.02em;
+  }
+  .unofficial-top-ribbon {
+    background: #FFFBEB;
+    border-bottom: 1px solid #FDE68A;
+    color: #78350F;
+    font-size: 12.5px;
+    line-height: 1.45;
+    padding: 8px clamp(20px, 4vw, 48px);
+    text-align: center;
+  }
+  .unofficial-top-ribbon strong {
+    color: #92400E;
+  }
+  .author-credit-panel {
+    background: #FFFFFF;
+    border: 1px solid #CBD5E1;
+    border-left: 4px solid #0B57D0;
+    border-radius: 12px;
+    padding: 13px 16px;
+    margin: 0 0 20px 0;
+    max-width: 64ch;
+    box-shadow: 0 4px 14px -6px rgba(15, 23, 42, 0.08);
+  }
+  .author-credit-chips {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+  .author-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #EFF6FF;
+    border: 1px solid #BFDBFE;
+    color: #1E3A8A;
+    font-size: 12.5px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 999px;
+  }
+  .author-chip.guidance {
+    background: #F8FAFC;
+    border-color: #CBD5E1;
+    color: #334155;
+  }
+  .author-initials {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #0B57D0;
+    color: #FFFFFF;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+  .author-chip.guidance .author-initials {
+    background: #475569;
+  }
+  .author-disclaimer-line {
+    font-size: 12px;
+    line-height: 1.45;
+    color: #475569;
+    padding-top: 7px;
+    border-top: 1px dashed #E2E8F0;
+  }
+  .site-global-footer {
+    border-top: 1px solid var(--border-subtle);
+    background: #F8FAFC;
+    padding: 26px clamp(20px, 4vw, 56px);
+    font-size: 13px;
+    color: #475569;
+  }
+  .site-global-footer-inner {
+    max-width: 1380px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
   }
   .gc-live-badge {
     display: inline-flex;
@@ -1325,6 +1422,7 @@
   <a href="#top" class="topbar-left" onclick="goHomeTop(); return false;" style="text-decoration:none; cursor:pointer;" title="Back to top of page">
     <span class="brand-mark">OW</span>
     <span class="brand-title">open-weights-playbook</span>
+    <span class="gc-unofficial-badge" style="font-size:10.5px;padding:2px 8px;" title="Independent community guide — not an officially supported Google product">Unofficial Guide</span>
   </a>
 
   <nav class="topbar-center" aria-label="Main">
@@ -1368,6 +1466,11 @@
   </div>
 </header>
 
+<!-- PERSISTENT UNOFFICIAL GUIDE + AUTHORSHIP TOP RIBBON -->
+<div class="unofficial-top-ribbon" role="note" aria-label="Unofficial Guide Notice and Credits">
+  <strong>⚠️ Unofficial Google Cloud Practitioner Guide:</strong> Authored &amp; built by <strong>Kanchana Patlolla</strong> &amp; <strong>Anusha Sabbineni</strong>, with guidance from <strong>Alan Blount</strong>. Not an official Google or Google Cloud product, documentation site, or endorsement — views are the authors' own.
+</div>
+
 <!-- =========================================================
      VARIANT FIRST PAGE: GOOGLE CLOUD × OPEN-WEIGHT AI HERO
      + 5 KEY ARCHITECT QUESTIONS + ALL OPEN-WEIGHT MODELS
@@ -1377,17 +1480,25 @@
     <div class="gc-split-grid">
       <div>
         <div class="gc-eyebrow-row">
-          <span class="gc-pill-badge">☁️ GOOGLE CLOUD × OPEN-WEIGHT AI</span>
+          <span class="gc-unofficial-badge">⚠️ UNOFFICIAL GOOGLE CLOUD GUIDE</span>
           <span class="gc-live-badge">● Living Playbook · Updated Nov 2026</span>
         </div>
         <h1 class="gc-hero-title">
           Enterprise Architect's Guide to <span class="hl">Open-Weight AI Models</span> on Google&nbsp;Cloud
         </h1>
         <p class="gc-hero-sub">
-          Open-weight models now power <strong>56% of enterprise gateway token volume at 14% of total spend</strong>. Before downloading a checkpoint or reserving GPUs, use this living playbook to answer the five questions every enterprise architect faces—and deploy each layer on <strong>Google Cloud</strong>.
+          Open-weight models now power <strong>56% of enterprise gateway token volume at 14% of total spend</strong>. Before downloading a checkpoint or reserving GPUs, use this unofficial practitioner playbook to answer the five questions every enterprise architect faces—with examples across Google Cloud.
         </p>
-        <div style="font-size:13.5px;color:#334155;background:#F8FAFC;border:1px solid #E2E8F0;border-left:3.5px solid #0B57D0;border-radius:8px;padding:9px 14px;margin-bottom:18px;max-width:60ch;">
-          <strong>Authored &amp; Built by:</strong> Kanchana Patlolla &amp; Anusha Sabbineni &nbsp;·&nbsp; <strong>With guidance from:</strong> Alan Blount <span style="color:#64748B;">(Google Cloud)</span>
+        <div class="author-credit-panel">
+          <div class="author-credit-chips">
+            <span style="font-size:12px;font-weight:700;color:#0F172A;text-transform:uppercase;letter-spacing:0.04em;">Created by</span>
+            <span class="author-chip"><span class="author-initials">KP</span> Kanchana Patlolla</span>
+            <span class="author-chip"><span class="author-initials">AS</span> Anusha Sabbineni</span>
+            <span class="author-chip guidance"><span class="author-initials">AB</span> Guidance: Alan Blount</span>
+          </div>
+          <div class="author-disclaimer-line">
+            <strong>Unofficial Guide Disclaimer:</strong> Independent community &amp; practitioner resource — <strong>not</strong> an officially supported Google product, official Google Cloud documentation, or legal advice. All opinions and FinOps estimates are the authors' own.
+          </div>
         </div>
         <div class="gc-cta-row">
           <a class="btn-pill-dark" href="#playbook-start" onclick="navToSection('view-enterprise', 'playbook-start'); return false;">
@@ -1557,7 +1668,7 @@
      ========================================================= -->
 <section class="models-dir-sec" id="models-directory-sec">
   <div class="gc-sec-hdr">
-    <h2>🧩 Open-Weight Models Covered in This Playbook &amp; Google Cloud Series</h2>
+    <h2>🧩 Open-Weight Models Covered in This Unofficial Guide &amp; Series</h2>
     <span>Filter by license, provenance tier, or Google Cloud deployment surface</span>
   </div>
   <div class="models-filter-bar">
@@ -1669,7 +1780,7 @@
     <!-- VIEW 1: ENTERPRISE WHITEPAPER + INLINE INTERACTIVE TOOLKIT (DEFAULT) -->
     <div id="view-enterprise" class="view-section active">
       <div class="breadcrumbs">
-        <span>Enterprise Guides</span>
+        <span>Unofficial Practitioner Guides</span>
         <span>›</span>
         <span>Open-Weight AI Models</span>
         <span>›</span>
@@ -1677,16 +1788,24 @@
       </div>
 
       <header class="whitepaper-header">
+        <div style="margin-bottom:10px;">
+          <span class="gc-unofficial-badge">⚠️ UNOFFICIAL GOOGLE CLOUD PRACTITIONER GUIDE · NOT AN OFFICIAL GOOGLE PRODUCT</span>
+        </div>
         <h1 class="whitepaper-title">Open-Weight AI Models for the Enterprise: An Architect's Guide to Strategy, Economics &amp; Production Patterns</h1>
-        <div class="whitepaper-sub">
-          <span><strong>Authored &amp; Built by:</strong> Kanchana Patlolla &amp; Anusha Sabbineni · <strong>With guidance from:</strong> Alan Blount (Google Cloud)</span>
-          <span>Part 1 of 7 · Companion Playbook to the Google Cloud Code &amp; Video Series</span>
+        <div class="whitepaper-sub" style="display:flex;flex-direction:column;gap:6px;margin-top:10px;">
+          <div class="author-credit-chips" style="margin-bottom:2px;">
+            <span class="author-chip"><span class="author-initials">KP</span> Kanchana Patlolla</span>
+            <span class="author-chip"><span class="author-initials">AS</span> Anusha Sabbineni</span>
+            <span class="author-chip guidance"><span class="author-initials">AB</span> Guidance: Alan Blount</span>
+          </div>
+          <span>Part 1 of 7 · Unofficial Companion Playbook to the Community Code &amp; Video Series (Views expressed are the authors' own)</span>
         </div>
       </header>
 
       <div class="single-col-body">
-        <p><strong>Authored & Built by Kanchana Patlolla & Anusha Sabbineni · With strategic & technical guidance from Alan Blount (Google Cloud)</strong></p>
-<p><em>Enterprise Architecture & Strategy Playbook · Companion Guide to the Google Cloud Code & Video Series</em></p>
+        <div class="callout-box">
+<p style="margin:0 0 8px 0;"><strong>⚠️ Unofficial Guide Disclaimer:</strong> This playbook and companion website are an <strong>unofficial practitioner guide</strong> created to help enterprise architects evaluate open-weight AI models. This is <strong>not</strong> an official Google or Google Cloud publication, product documentation, endorsement, or an officially supported Google product. All views, architectural patterns, FinOps cost models, and licensing summaries (for informational planning only, not legal advice) are strictly the authors' own.</p>
+</div>
 <div class="callout-box">
 <p style="margin:0 0 8px 0;"><strong>Why Read This Guide? (For Enterprise Architects Considering Open Weights)</strong></p>
 <p style="margin:0 0 8px 0;"></p>
@@ -2071,7 +2190,7 @@
     <!-- VIEW 3: 7-PART CODE & VIDEO SERIES -->
     <div id="view-series" class="view-section">
       <div class="breadcrumbs">
-        <span>Enterprise Guides</span>
+        <span>Unofficial Practitioner Guides</span>
         <span>›</span>
         <span>Open-Weight AI Models</span>
         <span>›</span>
@@ -2079,10 +2198,17 @@
       </div>
 
       <header class="whitepaper-header">
-        <h1 class="whitepaper-title">7-Part Google Cloud Open-Weight Models Blog, Video &amp; Code Series</h1>
-        <div class="whitepaper-sub">
-          <span><strong>Created &amp; Authored by:</strong> Kanchana Patlolla &amp; Anusha Sabbineni · <strong>With guidance from:</strong> Alan Blount</span>
-          <span>Repository Structure: <code>whitepaper/</code> · <code>docs/</code> · <code>series/part-02..07/</code></span>
+        <div style="margin-bottom:10px;">
+          <span class="gc-unofficial-badge">⚠️ UNOFFICIAL GOOGLE CLOUD PRACTITIONER SERIES · NOT AN OFFICIAL GOOGLE PRODUCT</span>
+        </div>
+        <h1 class="whitepaper-title">7-Part Open-Weight Models Community Blog, Video &amp; Code Series (with Google Cloud Examples)</h1>
+        <div class="whitepaper-sub" style="display:flex;flex-direction:column;gap:6px;margin-top:10px;">
+          <div class="author-credit-chips" style="margin-bottom:2px;">
+            <span class="author-chip"><span class="author-initials">KP</span> Kanchana Patlolla</span>
+            <span class="author-chip"><span class="author-initials">AS</span> Anusha Sabbineni</span>
+            <span class="author-chip guidance"><span class="author-initials">AB</span> Guidance: Alan Blount</span>
+          </div>
+          <span>Unofficial community resource (views are the authors' own) · Repo: <code>whitepaper/</code> · <code>docs/</code> · <code>series/part-02..07/</code></span>
         </div>
       </header>
 
@@ -2165,9 +2291,19 @@
 
   </main>
 
-
-
 </div>
+
+<footer class="site-global-footer">
+  <div class="site-global-footer-inner">
+    <div style="font-weight:600;color:#0F172A;">
+      ✍️ Authored &amp; Built by <strong>Kanchana Patlolla</strong> &amp; <strong>Anusha Sabbineni</strong> &nbsp;·&nbsp; With guidance from <strong>Alan Blount</strong> &nbsp;·&nbsp;
+      <a href="https://github.com/kanchpat/open-weight-models" target="_blank" rel="noopener">GitHub Repository (Apache 2.0) ↗</a>
+    </div>
+    <div>
+      <strong>⚠️ Unofficial Google / Google Cloud Guide Disclaimer:</strong> This website (<code>kanchpat.github.io/open-weight-models</code>) and companion repository are an independent, <strong>unofficial practitioner &amp; community guide</strong>. This is <strong>not</strong> an officially supported Google product, official Google Cloud documentation, or an official statement on behalf of Google LLC. All opinions, architectural recommendations, FinOps cost estimates, and model license summaries (provided for informational planning only and not legal advice) are strictly the authors' own.
+    </div>
+  </div>
+</footer>
 
 <script>
 const LICENSE_MODELS = [
