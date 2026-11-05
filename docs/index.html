@@ -368,90 +368,155 @@
     color: var(--text-muted);
   }
 
-  /* 5 Key Enterprise Architect Questions Grid */
+  /* 5 Key Enterprise Architect Questions Grid (Visual Metric Bento) */
   .gc-questions-box {
-    background: #FFFFFF;
-    border: 1px solid var(--border-subtle);
-    border-radius: 14px;
-    padding: 20px 22px;
-    box-shadow: 0 8px 24px -16px rgba(15, 23, 42, 0.10);
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(10px);
+    border: 1px solid #E2E8F0;
+    border-radius: 18px;
+    padding: 22px 24px;
+    box-shadow: 0 16px 36px -18px rgba(15, 23, 42, 0.12);
   }
   .gc-sec-hdr {
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
+    align-items: center;
     flex-wrap: wrap;
     gap: 8px;
-    margin-bottom: 14px;
+    margin-bottom: 16px;
   }
   .gc-sec-hdr h2 {
     margin: 0;
     padding: 0;
     border: none;
-    font-size: 19px;
-    font-weight: 600;
+    font-size: 18.5px;
+    font-weight: 700;
+    letter-spacing: -0.015em;
     color: var(--text-primary);
   }
   .gc-sec-hdr span {
-    font-size: 12.5px;
-    color: var(--text-muted);
+    font-size: 12px;
+    font-weight: 500;
+    color: #0B57D0;
+    background: #EFF6FF;
+    padding: 4px 10px;
+    border-radius: 999px;
   }
   .gc-q-grid {
     display: grid;
     grid-template-columns: repeat(5, minmax(0, 1fr));
-    gap: 12px;
+    gap: 14px;
   }
   @media (max-width: 1180px) {
-    .gc-q-grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
+    .gc-q-grid { grid-template-columns: repeat(auto-fill, minmax(225px, 1fr)); }
   }
   .gc-q-card {
-    background: #F8FAFC;
+    background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
     border: 1px solid #E2E8F0;
-    border-top: 3px solid #0B57D0;
-    border-radius: 10px;
-    padding: 13px 14px;
+    border-radius: 14px;
+    padding: 16px 15px 14px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     cursor: pointer;
-    transition: all 0.15s ease;
+    transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
     text-align: left;
+    position: relative;
+    overflow: hidden;
   }
-  .gc-q-card:nth-child(2) { border-top-color: #16A34A; }
-  .gc-q-card:nth-child(3) { border-top-color: #D97706; }
-  .gc-q-card:nth-child(4) { border-top-color: #DC2626; }
-  .gc-q-card:nth-child(5) { border-top-color: #7C3AED; }
+  .gc-q-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3.5px;
+    background: var(--q-accent, #0B57D0);
+  }
   .gc-q-card:hover {
-    background: #EFF6FF;
-    border-color: #93C5FD;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 16px -8px rgba(11, 87, 208, 0.20);
+    transform: translateY(-4px);
+    border-color: var(--q-accent, #0B57D0);
+    box-shadow: 0 14px 28px -12px rgba(15, 23, 42, 0.16);
+    background: #FFFFFF;
   }
-  .gc-q-kicker {
+  .gc-q-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+  }
+  .gc-q-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: var(--q-bg, #EFF6FF);
+    color: var(--q-accent, #0B57D0);
+    display: grid;
+    place-items: center;
+  }
+  .gc-q-icon svg {
+    width: 19px;
+    height: 19px;
+  }
+  .gc-q-num {
     font-family: var(--code);
     font-size: 11px;
-    font-weight: 600;
-    color: #0B57D0;
-    text-transform: uppercase;
-    margin-bottom: 5px;
+    font-weight: 700;
+    color: var(--q-accent, #0B57D0);
+    background: var(--q-bg, #EFF6FF);
+    padding: 3px 8px;
+    border-radius: 999px;
   }
   .gc-q-title {
-    font-size: 13.5px;
-    font-weight: 600;
-    color: var(--text-primary);
-    line-height: 1.35;
-    margin-bottom: 6px;
-  }
-  .gc-q-ans {
-    font-size: 12px;
-    color: var(--text-secondary);
-    line-height: 1.42;
+    font-size: 15px;
+    font-weight: 700;
+    color: #0F172A;
+    line-height: 1.28;
     margin-bottom: 10px;
+    letter-spacing: -0.01em;
+  }
+  .gc-q-stat {
+    background: var(--q-bg, #EFF6FF);
+    border-radius: 9px;
+    padding: 8px 10px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 6px;
+  }
+  .gc-q-stat strong {
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--q-accent, #0B57D0);
+    letter-spacing: -0.02em;
+  }
+  .gc-q-stat span {
+    font-size: 11px;
+    font-weight: 600;
+    color: #475569;
+  }
+  .gc-q-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-bottom: 12px;
+  }
+  .gc-q-pill {
+    font-family: var(--code);
+    font-size: 10.5px;
+    font-weight: 500;
+    background: #F1F5F9;
+    color: #334155;
+    padding: 2px 7px;
+    border-radius: 5px;
   }
   .gc-q-foot {
-    font-size: 11.5px;
-    font-weight: 600;
-    color: #0B57D0;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--q-accent, #0B57D0);
+    padding-top: 9px;
+    border-top: 1px solid #F1F5F9;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -1363,56 +1428,124 @@
       </div>
     </div>
 
-    <!-- 5 KEY ARCHITECT QUESTIONS (CLOUD × OPEN WEIGHTS) -->
+    <!-- 5 KEY ARCHITECT QUESTIONS (VISUAL METRIC BENTO) -->
     <div class="gc-questions-box" id="architect-questions">
       <div class="gc-sec-hdr">
-        <h2>❓ 5 Key Questions for Enterprise Architects: Google Cloud × Open Weights</h2>
-        <span>Click any question to jump directly to the analysis or interactive calculator</span>
+        <h2>5 Key Questions for Enterprise Architects</h2>
+        <span>Click any card to launch its calculator or blueprint ↓</span>
       </div>
       <div class="gc-q-grid">
-        <div class="gc-q-card" onclick="navToSection('view-enterprise', 'widget-license-inline')">
+        <!-- Q1 -->
+        <div class="gc-q-card" style="--q-accent:#0B57D0; --q-bg:#EFF6FF;" onclick="navToSection('view-enterprise', 'widget-license-inline')">
           <div>
-            <div class="gc-q-kicker">Q1 · Tiers &amp; Licensing</div>
-            <div class="gc-q-title">What are we actually downloading—and which licenses are safe at scale?</div>
-            <div class="gc-q-ans">Separate <strong>Tier 3 Open Weights</strong> from <strong>Tier 4 Full Open Source (Olmo 3)</strong>, and filter out <code>$10B</code> valuation, <code>100M</code> MAU &amp; <code>NC</code> LoRA traps.</div>
+            <div class="gc-q-top">
+              <div class="gc-q-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+              </div>
+              <span class="gc-q-num">01 · LICENSE</span>
+            </div>
+            <div class="gc-q-title">Which open-weight license is safe?</div>
+            <div class="gc-q-stat">
+              <strong>Tier 1–4</strong>
+              <span>Valuation &amp; MAU Caps</span>
+            </div>
+            <div class="gc-q-pills">
+              <span class="gc-q-pill">Apache 2.0</span>
+              <span class="gc-q-pill">$10B Gate</span>
+              <span class="gc-q-pill">Olmo 3</span>
+            </div>
           </div>
-          <div class="gc-q-foot"><span>§1–2 &amp; License Sliders</span><span>→</span></div>
+          <div class="gc-q-foot"><span>⚡ Try License Filter</span><span>→</span></div>
         </div>
 
-        <div class="gc-q-card" onclick="navToSection('view-enterprise', '4-2-high-roi-runtime-drivers-evolving-the-harness-system-1-models')">
+        <!-- Q2 -->
+        <div class="gc-q-card" style="--q-accent:#15803D; --q-bg:#ECFDF5;" onclick="navToSection('view-enterprise', '4-2-high-roi-runtime-drivers-evolving-the-harness-system-1-models')">
           <div>
-            <div class="gc-q-kicker" style="color:#15803D;">Q2 · Harnesses &amp; System 1</div>
-            <div class="gc-q-title">How do we gain +16.7pp accuracy &amp; 35× faster triage without retraining?</div>
-            <div class="gc-q-ans">Evolve the agent harness in <strong>Google ADK</strong> and offload classification to single-pass <strong>System 1 models (<code>output_tokens: 0</code>)</strong>.</div>
+            <div class="gc-q-top">
+              <div class="gc-q-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+              </div>
+              <span class="gc-q-num">02 · HARNESS</span>
+            </div>
+            <div class="gc-q-title">Train weights or evolve the harness?</div>
+            <div class="gc-q-stat">
+              <strong>+16.7pp</strong>
+              <span>35× Faster System 1</span>
+            </div>
+            <div class="gc-q-pills">
+              <span class="gc-q-pill">Google ADK</span>
+              <span class="gc-q-pill">output_tokens: 0</span>
+            </div>
           </div>
-          <div class="gc-q-foot" style="color:#15803D;"><span>§3.2 &amp; §4.2 Runtime Levers</span><span>→</span></div>
+          <div class="gc-q-foot"><span>Explore Harnesses</span><span>→</span></div>
         </div>
 
-        <div class="gc-q-card" onclick="navToSection('view-enterprise', '4-3-seven-enterprise-watch-outs-how-to-mitigate-them')">
+        <!-- Q3 -->
+        <div class="gc-q-card" style="--q-accent:#B45309; --q-bg:#FEF3C7;" onclick="navToSection('view-enterprise', '4-3-seven-enterprise-watch-outs-how-to-mitigate-them')">
           <div>
-            <div class="gc-q-kicker" style="color:#B45309;">Q3 · Security &amp; Sovereignty</div>
-            <div class="gc-q-title">How do we defend against $1,200 weight abliteration &amp; shadow models?</div>
-            <div class="gc-q-ans">Enforce <code>SHA-256</code> checkpoint pinning in <strong>Artifact Registry</strong>, air-gapped VPC execution, and <strong>Google Cloud Model Armor</strong>.</div>
+            <div class="gc-q-top">
+              <div class="gc-q-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              </div>
+              <span class="gc-q-num">03 · SECURITY</span>
+            </div>
+            <div class="gc-q-title">How do we lock down VPC &amp; weights?</div>
+            <div class="gc-q-stat">
+              <strong>SHA-256</strong>
+              <span>In-VPC Isolation</span>
+            </div>
+            <div class="gc-q-pills">
+              <span class="gc-q-pill">Artifact Registry</span>
+              <span class="gc-q-pill">Model Armor</span>
+            </div>
           </div>
-          <div class="gc-q-foot" style="color:#B45309;"><span>§4.3 Risk Watch-Outs</span><span>→</span></div>
+          <div class="gc-q-foot"><span>7 Risk Watch-Outs</span><span>→</span></div>
         </div>
 
-        <div class="gc-q-card" onclick="navToSection('view-enterprise', '5-industry-patterns-real-world-production-deployments')">
+        <!-- Q4 -->
+        <div class="gc-q-card" style="--q-accent:#DC2626; --q-bg:#FEE2E2;" onclick="navToSection('view-enterprise', '5-industry-patterns-real-world-production-deployments')">
           <div>
-            <div class="gc-q-kicker" style="color:#B91C1C;">Q4 · Industry Patterns</div>
-            <div class="gc-q-title">How are Netflix, Pinterest, Harvey, DoorDash, Coinbase &amp; Uber shipping?</div>
-            <div class="gc-q-ans">Inspect 5 production blueprints: prefill catalog rankers, vision grafts, rubric gates, <code>10×</code> distillation &amp; <code>&lt;$100</code> single-GPU <code>GRPO</code> RL.</div>
+            <div class="gc-q-top">
+              <div class="gc-q-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+              </div>
+              <span class="gc-q-num">04 · PATTERNS</span>
+            </div>
+            <div class="gc-q-title">Who is running this in production?</div>
+            <div class="gc-q-stat">
+              <strong>5 Patterns</strong>
+              <span>Up to 90% Cost Cut</span>
+            </div>
+            <div class="gc-q-pills">
+              <span class="gc-q-pill">Netflix</span>
+              <span class="gc-q-pill">Pinterest</span>
+              <span class="gc-q-pill">Harvey</span>
+              <span class="gc-q-pill">DoorDash</span>
+            </div>
           </div>
-          <div class="gc-q-foot" style="color:#B91C1C;"><span>§5 Industry Patterns (1–5)</span><span>→</span></div>
+          <div class="gc-q-foot"><span>Industry Patterns</span><span>→</span></div>
         </div>
 
-        <div class="gc-q-card" onclick="navToSection('view-enterprise', 'widget-tco-inline')">
+        <!-- Q5 -->
+        <div class="gc-q-card" style="--q-accent:#6D28D9; --q-bg:#F3E8FF;" onclick="navToSection('view-enterprise', 'widget-tco-inline')">
           <div>
-            <div class="gc-q-kicker" style="color:#6D28D9;">Q5 · FinOps &amp; Cloud Stack</div>
-            <div class="gc-q-title">When should we use serverless OpenMaaS vs. dedicated self-hosted GPUs?</div>
-            <div class="gc-q-ans">Dedicated GPUs cost <strong>1.42× more</strong> below a <strong>73% duty cycle</strong>. Start on <strong>Vertex AI OpenMaaS</strong> or <strong>Cloud Run scale-to-zero GPUs</strong>.</div>
+            <div class="gc-q-top">
+              <div class="gc-q-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>
+              </div>
+              <span class="gc-q-num">05 · FINOPS</span>
+            </div>
+            <div class="gc-q-title">Serverless OpenMaaS or dedicated GPUs?</div>
+            <div class="gc-q-stat">
+              <strong>73% Rule</strong>
+              <span>$0 Idle GPU Burn</span>
+            </div>
+            <div class="gc-q-pills">
+              <span class="gc-q-pill">OpenMaaS ($0.907)</span>
+              <span class="gc-q-pill">Cloud Run vLLM</span>
+            </div>
           </div>
-          <div class="gc-q-foot" style="color:#6D28D9;"><span>§6–7 &amp; FinOps Calculator</span><span>→</span></div>
+          <div class="gc-q-foot"><span>⚡ FinOps Calculator</span><span>→</span></div>
         </div>
       </div>
     </div>
