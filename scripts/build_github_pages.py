@@ -31,6 +31,10 @@ HERO_IMG_PATH = os.path.join(ASSETS_DIR, "hero_google_cloud_open_weights.jpg")
 with open(HERO_IMG_PATH, "rb") as f:
     HERO_IMG_B64 = "data:image/jpeg;base64," + base64.b64encode(f.read()).decode("ascii")
 
+YT_THUMB_PATH = os.path.join(ASSETS_DIR, "youtube_explainer_thumbnail.jpg")
+with open(YT_THUMB_PATH, "rb") as f:
+    YT_THUMB_B64 = "data:image/jpeg;base64," + base64.b64encode(f.read()).decode("ascii")
+
 def sanitize_external(md_text):
     md_text = md_text.replace("`go/System 1-decision-gemma`", "`System 1` Decision Heads")
     md_text = md_text.replace("; `go/decision-models-customer-signals-explainers`", "")
@@ -828,6 +832,245 @@ HTML_TEMPLATE = f"""<!DOCTYPE html>
   .gc-surf-chip span {{
     font-size: 10.5px;
     color: var(--text-muted);
+  }}
+
+  /* Hero Video Trigger Pill + Above-the-Scroll 5-Min Video Spotlight */
+  .btn-pill-video {{
+    border: 1px solid #0F172A;
+    background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+    color: #FFFFFF;
+    height: 38px;
+    padding: 0 15px;
+    border-radius: 999px;
+    font-size: 13.5px;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    text-decoration: none;
+    box-shadow: 0 6px 16px -6px rgba(15, 23, 42, 0.35);
+    transition: all 0.15s ease;
+  }}
+  .btn-pill-video:hover {{
+    background: linear-gradient(135deg, #0B57D0 0%, #1D4ED8 100%);
+    border-color: #0B57D0;
+    color: #FFFFFF;
+    transform: translateY(-1px);
+    text-decoration: none;
+  }}
+  .vid-dur-tag {{
+    font-family: var(--code);
+    font-size: 10.5px;
+    font-weight: 700;
+    background: rgba(56, 189, 248, 0.22);
+    color: #7DD3FC;
+    padding: 1px 7px;
+    border-radius: 999px;
+  }}
+
+  .gc-video-spotlight {{
+    background: linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 55%, #EFF6FF 100%);
+    border: 1px solid #BFDBFE;
+    border-radius: 18px;
+    padding: 18px 22px;
+    margin-bottom: 22px;
+    box-shadow: 0 16px 36px -20px rgba(11, 87, 208, 0.22);
+    display: grid;
+    grid-template-columns: minmax(320px, 430px) minmax(0, 1fr);
+    gap: 24px;
+    align-items: center;
+    scroll-margin-top: 84px;
+  }}
+  .gc-video-spotlight.is-playing {{
+    grid-template-columns: minmax(360px, 540px) minmax(0, 1fr);
+  }}
+  @media (max-width: 1020px) {{
+    .gc-video-spotlight,
+    .gc-video-spotlight.is-playing {{
+      grid-template-columns: 1fr;
+    }}
+  }}
+  .yt-player-stage {{
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #060A15;
+    border: 1px solid #CBD5E1;
+    box-shadow: 0 14px 30px -12px rgba(15, 23, 42, 0.35);
+  }}
+  .yt-player-stage iframe {{
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }}
+  .yt-poster-btn {{
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    border: 0;
+    background: #060A15;
+    cursor: pointer;
+    display: block;
+  }}
+  .yt-poster-btn img {{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.25s ease, filter 0.25s ease;
+  }}
+  .yt-poster-btn:hover img {{
+    transform: scale(1.025);
+    filter: brightness(1.06);
+  }}
+  .yt-play-ring {{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: rgba(220, 38, 38, 0.94);
+    border: 2.5px solid rgba(255, 255, 255, 0.92);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.55);
+    display: grid;
+    place-items: center;
+    transition: transform 0.18s ease, background 0.18s ease;
+  }}
+  .yt-poster-btn:hover .yt-play-ring {{
+    transform: translate(-50%, -50%) scale(1.09);
+    background: #EF4444;
+  }}
+  .yt-play-ring svg {{
+    width: 26px;
+    height: 26px;
+    fill: #FFFFFF;
+    margin-left: 3px;
+  }}
+  .yt-dur-badge {{
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    background: rgba(6, 10, 21, 0.88);
+    color: #F8FAFC;
+    border: 1px solid rgba(148, 163, 184, 0.35);
+    font-family: var(--code);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 6px;
+  }}
+  .yt-spot-meta {{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }}
+  .yt-spot-top {{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }}
+  .yt-eyebrow {{
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #0B57D0;
+    background: #DBEAFE;
+    padding: 4px 10px;
+    border-radius: 999px;
+  }}
+  .yt-ext-link {{
+    font-size: 12px;
+    font-weight: 600;
+    color: #334155;
+    background: #FFFFFF;
+    border: 1px solid #CBD5E1;
+    padding: 4px 11px;
+    border-radius: 999px;
+    text-decoration: none;
+    transition: all 0.15s ease;
+  }}
+  .yt-ext-link:hover {{
+    border-color: #0B57D0;
+    color: #0B57D0;
+    text-decoration: none;
+  }}
+  .yt-spot-title {{
+    margin: 0;
+    font-size: 19px;
+    font-weight: 750;
+    color: #0F172A;
+    line-height: 1.28;
+    letter-spacing: -0.015em;
+  }}
+  .yt-spot-sub {{
+    margin: 0;
+    font-size: 13px;
+    color: #475569;
+    line-height: 1.45;
+  }}
+  .yt-chap-grid {{
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+    margin-top: 2px;
+  }}
+  @media (max-width: 720px) {{
+    .yt-chap-grid {{ grid-template-columns: repeat(2, minmax(0, 1fr)); }}
+  }}
+  .yt-chap-btn {{
+    text-align: left;
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 9px;
+    padding: 7px 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 12px;
+    color: #1E293B;
+    font-weight: 600;
+    transition: all 0.14s ease;
+  }}
+  .yt-chap-btn:hover,
+  .yt-chap-btn.active {{
+    border-color: #0B57D0;
+    background: #EFF6FF;
+    color: #0B57D0;
+  }}
+  .yt-chap-time {{
+    font-family: var(--code);
+    font-size: 10.5px;
+    font-weight: 700;
+    color: #0B57D0;
+    background: #EFF6FF;
+    padding: 2px 6px;
+    border-radius: 5px;
+    flex-shrink: 0;
+  }}
+  .yt-chap-btn.active .yt-chap-time {{
+    background: #0B57D0;
+    color: #FFFFFF;
+  }}
+  .yt-chap-lbl {{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }}
 
   /* 5 Key Enterprise Architect Questions Grid (Visual Metric Bento) */
@@ -1866,6 +2109,9 @@ HTML_TEMPLATE = f"""<!DOCTYPE html>
           </div>
         </div>
         <div class="gc-cta-row">
+          <button type="button" class="btn-pill-video" onclick="playExplainerAt(0, true, null)">
+            <span aria-hidden="true">▶</span> Watch 5-Min Overview <span class="vid-dur-tag">5:01</span>
+          </button>
           <a class="btn-pill-dark" href="#playbook-start" onclick="navToSection('view-enterprise', 'playbook-start'); return false;">
             Read Full Playbook <span aria-hidden="true">↓</span>
           </a>
@@ -1900,6 +2146,53 @@ HTML_TEMPLATE = f"""<!DOCTYPE html>
             <strong>Agent Runtime</strong>
             <span>In-VPC · LoRA/GRPO</span>
           </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5-MINUTE NARRATED ARCHITECT'S VIDEO OVERVIEW (ENTRY RAMP ABOVE DEEP SCROLL) -->
+    <div class="gc-video-spotlight" id="video-briefing">
+      <div class="yt-player-stage" id="yt-player-stage">
+        <button type="button" class="yt-poster-btn" onclick="playExplainerAt(0, false, null)" aria-label="Play 5-Minute Open-Weight AI Playbook Overview Video">
+          <img src="{YT_THUMB_B64}" alt="Open-Weight AI Playbook 5-Minute Explainer Thumbnail" />
+          <span class="yt-play-ring" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><polygon points="6,4 20,12 6,20"></polygon></svg>
+          </span>
+          <span class="yt-dur-badge">▶ 05:01</span>
+        </button>
+      </div>
+      <div class="yt-spot-meta">
+        <div class="yt-spot-top">
+          <span class="yt-eyebrow">🎬 5-Minute Executive Overview · Start Here</span>
+          <a class="yt-ext-link" href="https://youtu.be/jxbvqmRBcAo" target="_blank" rel="noopener noreferrer">Watch on YouTube ↗</a>
+        </div>
+        <h2 class="yt-spot-title">Prefer to watch first? Get the strategy, trade-offs &amp; 3-calculator tour in 5 minutes</h2>
+        <p class="yt-spot-sub">Narrated by <strong>Kanchana Patlolla</strong> — why open weights run 56% of tokens at 14% of spend, hidden valuation &amp; MAU license traps, the <strong>73% GPU utilization rule</strong>, and how to use all three live calculators below. Click any chapter to jump right in:</p>
+        <div class="yt-chap-grid" role="group" aria-label="Video chapters">
+          <button type="button" class="yt-chap-btn" onclick="playExplainerAt(0, false, this)">
+            <span class="yt-chap-time">0:00</span>
+            <span class="yt-chap-lbl">56% / 14% Shift</span>
+          </button>
+          <button type="button" class="yt-chap-btn" onclick="playExplainerAt(40, false, this)">
+            <span class="yt-chap-time">0:40</span>
+            <span class="yt-chap-lbl">Why Enterprises Care</span>
+          </button>
+          <button type="button" class="yt-chap-btn" onclick="playExplainerAt(71, false, this)">
+            <span class="yt-chap-time">1:11</span>
+            <span class="yt-chap-lbl">License &amp; Data Traps</span>
+          </button>
+          <button type="button" class="yt-chap-btn" onclick="playExplainerAt(116, false, this)">
+            <span class="yt-chap-time">1:56</span>
+            <span class="yt-chap-lbl">ADK &amp; System 1 Heads</span>
+          </button>
+          <button type="button" class="yt-chap-btn" onclick="playExplainerAt(151, false, this)">
+            <span class="yt-chap-time">2:31</span>
+            <span class="yt-chap-lbl">The 73% GPU Rule</span>
+          </button>
+          <button type="button" class="yt-chap-btn" onclick="playExplainerAt(192, false, this)">
+            <span class="yt-chap-time">3:12</span>
+            <span class="yt-chap-lbl">3 Live Calculators</span>
+          </button>
         </div>
       </div>
     </div>
@@ -2057,6 +2350,12 @@ HTML_TEMPLATE = f"""<!DOCTYPE html>
     <div class="nav-group">
       <div class="nav-group-title">1. Strategy &amp; Licensing Triage</div>
       <ul class="nav-list">
+        <li class="nav-item">
+          <a class="nav-link" data-target="video-briefing" onclick="playExplainerAt(0, true, null); return false;">
+            <span>▶ 5-Min Video Overview</span>
+            <span class="interactive-tag">5:01</span>
+          </a>
+        </li>
         <li class="nav-item">
           <a class="nav-link active" data-target="1-open-weights-vs-open-source-the-4-release-tiers" onclick="navToSection('view-enterprise', '1-open-weights-vs-open-source-the-4-release-tiers'); return false;">1. The 4 Openness Release Tiers</a>
         </li>
@@ -2216,7 +2515,13 @@ HTML_TEMPLATE = f"""<!DOCTYPE html>
             <div class="series-surface"><strong>Surface:</strong> Vertex AI Model Garden (<code>Gemma 4</code>, <code>Qwen 3.8</code>, <code>DeepSeek-V4.1-Flash</code>, <code>Olmo 3</code>)</div>
             <p>The anchor executive whitepaper: 4-tier openness spectrum, <code>Green/Amber/Red</code> licensing triage, 5 Patterns from the Field, 7 downsides (<code>73%</code> duty cycle &amp; <code>$1,200</code> abliteration), and the Gartner 2×2 Matrix.</p>
           </div>
-          <button class="util-btn" style="width:100%;margin-top:10px;background:#EFF6FF;color:#1D4ED8;border-color:#BFDBFE;font-weight:600;" onclick="switchView('view-enterprise')">📖 Read Part 1 Whitepaper &amp; Interactive Tools →</button>
+          <div style="display:flex;flex-direction:column;gap:8px;margin-top:10px;">
+            <div style="display:flex;gap:8px;">
+              <button type="button" class="util-btn" style="flex:1;justify-content:center;background:#0F172A;color:#FFFFFF;border-color:#0F172A;font-weight:600;" onclick="playExplainerAt(0, true, null)">▶ Watch Part 1 Video (5:01)</button>
+              <a class="util-btn" style="text-decoration:none;font-weight:600;" href="https://youtu.be/jxbvqmRBcAo" target="_blank" rel="noopener noreferrer">YouTube ↗</a>
+            </div>
+            <button type="button" class="util-btn" style="width:100%;justify-content:center;background:#EFF6FF;color:#1D4ED8;border-color:#BFDBFE;font-weight:600;" onclick="switchView('view-enterprise')">📖 Read Part 1 Whitepaper &amp; Interactive Tools →</button>
+          </div>
         </div>
 
         <div class="series-card" id="series-part-2">
@@ -2697,6 +3002,51 @@ function filterModelShowcase(cat, btnEl) {{
       </div>`;
   }});
   container.innerHTML = html;
+}}
+
+function playExplainerAt(startSec, shouldScroll, btnEl) {{
+  const safeStart = Math.max(0, Math.min(300, Math.floor(Number(startSec) || 0)));
+  if (currentActiveView !== "view-enterprise") {{
+    switchView("view-enterprise", true);
+  }}
+  const spot = document.getElementById("video-briefing");
+  if (shouldScroll && spot) {{
+    spot.scrollIntoView({{ behavior: "smooth", block: "center" }});
+  }}
+  document.querySelectorAll(".yt-chap-btn").forEach(b => b.classList.remove("active"));
+  if (btnEl) {{
+    btnEl.classList.add("active");
+  }} else {{
+    const firstBtn = document.querySelector(".yt-chap-btn");
+    if (firstBtn && safeStart === 0) firstBtn.classList.add("active");
+  }}
+
+  // On file:// or opaque sandboxed origins (where YouTube blocks embeds without an HTTPS/HTTP referrer), open YouTube cleanly at the timestamp.
+  let originStr = "";
+  try {{ originStr = String(window.location.origin || ""); }} catch (e) {{ originStr = ""; }}
+  const proto = String(window.location.protocol || "");
+  if ((proto !== "https:" && proto !== "http:") || !originStr || originStr === "null") {{
+    const extUrl = safeStart > 0
+      ? "https://youtu.be/jxbvqmRBcAo?t=" + String(safeStart)
+      : "https://youtu.be/jxbvqmRBcAo";
+    window.open(extUrl, "_blank", "noopener,noreferrer");
+    return;
+  }}
+
+  const stage = document.getElementById("yt-player-stage");
+  if (!stage) return;
+  if (spot) spot.classList.add("is-playing");
+
+  const iframe = document.createElement("iframe");
+  iframe.setAttribute(
+    "src",
+    "https://www.youtube-nocookie.com/embed/jxbvqmRBcAo?autoplay=1&rel=0&modestbranding=1&playsinline=1&start=" + String(safeStart)
+  );
+  iframe.setAttribute("title", "Open-Weight AI Models for Enterprise Architects — 5-Minute Explainer");
+  iframe.setAttribute("allow", "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share");
+  iframe.setAttribute("referrerpolicy", "strict-origin-when-cross-origin");
+  iframe.setAttribute("allowfullscreen", "");
+  stage.replaceChildren(iframe);
 }}
 
 function goHomeTop() {{

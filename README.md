@@ -4,13 +4,26 @@ An interactive enterprise architecture playbook, zero-dependency FinOps & licens
 
 [![Deploy GitHub Pages](https://github.com/kanchpat/open-weight-models/actions/workflows/pages.yml/badge.svg)](https://github.com/kanchpat/open-weight-models/actions/workflows/pages.yml)
 [![Live Interactive Site](https://img.shields.io/badge/GitHub%20Pages-Live%20Interactive%20Playbook-0B57D0)](https://kanchpat.github.io/open-weight-models/)
+[![Watch 5-Min Overview](https://img.shields.io/badge/YouTube-Watch%205--Min%20Overview-DC2626?logo=youtube&logoColor=white)](https://youtu.be/jxbvqmRBcAo)
 [![Unofficial Guide](https://img.shields.io/badge/Notice-Unofficial%20Practitioner%20Guide-D97706)](#disclaimer--attribution)
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-16A34A)](LICENSE)
 
 > **✍️ Authored & Built by:** **Kanchana Patlolla** & **Anusha Sabbineni** · **With guidance from:** **Alan Blount**  
 > **⚠️ Unofficial Google Guide Disclaimer:** Independent community & practitioner resource — **not** an officially supported Google product, official Google Cloud documentation, or legal advice. Views and FinOps estimates are strictly the authors' own ([full notice](#disclaimer--attribution)).
 
+### ▶️ Prefer to Watch First? 5-Minute Enterprise Architect's Overview
+
+[![Watch the 5-Minute Open-Weight AI Playbook Explainer on YouTube](docs/assets/youtube_explainer_thumbnail.jpg)](https://youtu.be/jxbvqmRBcAo)
+
+> **🎬 [Watch on YouTube (5:01)](https://youtu.be/jxbvqmRBcAo)** — Jump by chapter: [`0:00` 56% / 14% Shift](https://youtu.be/jxbvqmRBcAo?t=0) · [`0:40` Why Care](https://youtu.be/jxbvqmRBcAo?t=40) · [`1:11` License Traps](https://youtu.be/jxbvqmRBcAo?t=71) · [`1:56` ADK & System 1](https://youtu.be/jxbvqmRBcAo?t=116) · [`2:31` 73% GPU Rule](https://youtu.be/jxbvqmRBcAo?t=151) · [`3:12` 3 Live Calculators](https://youtu.be/jxbvqmRBcAo?t=192)
+
+<details>
+<summary><strong>🖼️ View Google Cloud × Open-Weight AI Reference Stack Overview</strong></summary>
+<br>
+
 ![Unofficial Google Cloud Open-Weight AI Architecture Overview](docs/assets/hero_google_cloud_open_weights.jpg)
+
+</details>
 
 ## Table of Contents
 
