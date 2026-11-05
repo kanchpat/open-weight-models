@@ -3,7 +3,7 @@
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live%20Interactive%20Playbook-0B57D0?style=for-the-badge&logo=googlecloud)](https://kanchpat.github.io/open-weight-models/)
 [![License](https://img.shields.io/badge/License-Apache%202.0-16A34A?style=for-the-badge)](https://opensource.org/licenses/Apache-2.0)
 
-> **Authors:** Kanchana Patlolla & Anusha Sabbineni · Google Cloud  
+> **Authored & Built by:** Kanchana Patlolla & Anusha Sabbineni · **With strategic & technical guidance from:** Alan Blount (Google Cloud)  
 > **Live Interactive Documentation & FinOps Toolkit:** **[https://kanchpat.github.io/open-weight-models/](https://kanchpat.github.io/open-weight-models/)**  
 > **Repository:** **[https://github.com/kanchpat/open-weight-models](https://github.com/kanchpat/open-weight-models)**
 

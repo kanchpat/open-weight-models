@@ -1,6 +1,7 @@
 # Open-Weight AI Models for the Enterprise: An Architect's Guide to Strategy, Economics & Production Patterns
 
-**Enterprise Architecture & Strategy Playbook · Companion Guide to the Upcoming Google Cloud Code & Video Series**
+**Authored & Built by Kanchana Patlolla & Anusha Sabbineni · With strategic & technical guidance from Alan Blount (Google Cloud)**  
+*Enterprise Architecture & Strategy Playbook · Companion Guide to the Google Cloud Code & Video Series*
 
 > **Why Read This Guide? (For Enterprise Architects Considering Open Weights)**
 >
