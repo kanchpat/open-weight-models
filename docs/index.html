@@ -1806,7 +1806,7 @@
       <div class="yt-spot-meta">
         <div class="yt-spot-top">
           <span class="yt-eyebrow">🎬 5-Minute Executive Overview · Start Here</span>
-          <a class="yt-ext-link" href="https://youtu.be/jxbvqmRBcAo" target="_blank" rel="noopener noreferrer">Watch on YouTube ↗</a>
+          <a class="yt-ext-link" href="https://youtu.be/qcz1GhjCBOw" target="_blank" rel="noopener noreferrer">Watch on YouTube ↗</a>
         </div>
         <h2 class="yt-spot-title">Prefer to watch first? Get the strategy, trade-offs &amp; 3-calculator tour in 5 minutes</h2>
         <p class="yt-spot-sub">Narrated by <strong>Kanchana Patlolla</strong> — why open weights run 56% of tokens at 14% of spend, hidden valuation &amp; MAU license traps, the <strong>73% GPU utilization rule</strong>, and how to use all three live calculators below. Click any chapter to jump right in:</p>
@@ -2115,7 +2115,7 @@
 <div class="callout-box">
 <p style="margin:0 0 8px 0;"><strong>Why Read This Guide? (For Enterprise Architects Considering Open Weights)</strong></p>
 <p style="margin:0 0 8px 0;"></p>
-<p style="margin:0 0 8px 0;"><strong>▶️ Short on time?</strong> <a href="https://youtu.be/jxbvqmRBcAo" target="_blank" rel="noopener"><strong>Watch the 5-Minute Narrated Explainer & Live Calculator Tour on YouTube (5:01) →</strong></a></p>
+<p style="margin:0 0 8px 0;"><strong>▶️ Short on time?</strong> <a href="https://youtu.be/qcz1GhjCBOw" target="_blank" rel="noopener"><strong>Watch the 5-Minute Narrated Explainer & Live Calculator Tour on YouTube (5:01) →</strong></a></p>
 <p style="margin:0 0 8px 0;"></p>
 <p style="margin:0 0 8px 0;">Open-weight AI models now process <strong>56% of production gateway tokens</strong> while accounting for just <strong>14% of total spend</strong> (<a href="https://vercel.com/blog/ai-gateway-production-index-september-2026" target="_blank" rel="noopener">Vercel AI Gateway Index, Sept 2026</a>). If you are an <strong>Enterprise Architect, Platform Lead, or AI Engineering Leader</strong> evaluating whether—and how—to bring open weights into your production stack alongside closed frontier APIs, this guide answers the core architectural questions you need to resolve first:</p>
 <div style="margin:6px 0 6px 12px;">• <strong>What are you actually downloading?</strong> Why "open weights" (<code>customizable binary</code>) is different from "open source" (<code>weights + code + auditable training data</code>), and how to avoid hidden valuation, MAU, and non-commercial adapter traps.</div>
@@ -2535,7 +2535,7 @@
           <div style="display:flex;flex-direction:column;gap:8px;margin-top:10px;">
             <div style="display:flex;gap:8px;">
               <button type="button" class="util-btn" style="flex:1;justify-content:center;background:#0F172A;color:#FFFFFF;border-color:#0F172A;font-weight:600;" onclick="playExplainerAt(0, true, null)">▶ Watch Part 1 Video (5:01)</button>
-              <a class="util-btn" style="text-decoration:none;font-weight:600;" href="https://youtu.be/jxbvqmRBcAo" target="_blank" rel="noopener noreferrer">YouTube ↗</a>
+              <a class="util-btn" style="text-decoration:none;font-weight:600;" href="https://youtu.be/qcz1GhjCBOw" target="_blank" rel="noopener noreferrer">YouTube ↗</a>
             </div>
             <button type="button" class="util-btn" style="width:100%;justify-content:center;background:#EFF6FF;color:#1D4ED8;border-color:#BFDBFE;font-weight:600;" onclick="switchView('view-enterprise')">📖 Read Part 1 Whitepaper &amp; Interactive Tools →</button>
           </div>
@@ -3044,8 +3044,8 @@ function playExplainerAt(startSec, shouldScroll, btnEl) {
   const proto = String(window.location.protocol || "");
   if ((proto !== "https:" && proto !== "http:") || !originStr || originStr === "null") {
     const extUrl = safeStart > 0
-      ? "https://youtu.be/jxbvqmRBcAo?t=" + String(safeStart)
-      : "https://youtu.be/jxbvqmRBcAo";
+      ? "https://youtu.be/qcz1GhjCBOw?t=" + String(safeStart)
+      : "https://youtu.be/qcz1GhjCBOw";
     window.open(extUrl, "_blank", "noopener,noreferrer");
     return;
   }
@@ -3057,7 +3057,7 @@ function playExplainerAt(startSec, shouldScroll, btnEl) {
   const iframe = document.createElement("iframe");
   iframe.setAttribute(
     "src",
-    "https://www.youtube-nocookie.com/embed/jxbvqmRBcAo?autoplay=1&rel=0&modestbranding=1&playsinline=1&start=" + String(safeStart)
+    "https://www.youtube-nocookie.com/embed/qcz1GhjCBOw?autoplay=1&rel=0&modestbranding=1&playsinline=1&start=" + String(safeStart)
   );
   iframe.setAttribute("title", "Open-Weight AI Models for Enterprise Architects — 5-Minute Explainer");
   iframe.setAttribute("allow", "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share");

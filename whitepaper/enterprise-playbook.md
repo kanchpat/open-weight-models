@@ -7,7 +7,7 @@
 
 > **Why Read This Guide? (For Enterprise Architects Considering Open Weights)**
 >
-> **▶️ Short on time?** [**Watch the 5-Minute Narrated Explainer & Live Calculator Tour on YouTube (5:01) →**](https://youtu.be/jxbvqmRBcAo)
+> **▶️ Short on time?** [**Watch the 5-Minute Narrated Explainer & Live Calculator Tour on YouTube (5:01) →**](https://youtu.be/qcz1GhjCBOw)
 >
 > Open-weight AI models now process **56% of production gateway tokens** while accounting for just **14% of total spend** ([Vercel AI Gateway Index, Sept 2026](https://vercel.com/blog/ai-gateway-production-index-september-2026)). If you are an **Enterprise Architect, Platform Lead, or AI Engineering Leader** evaluating whether—and how—to bring open weights into your production stack alongside closed frontier APIs, this guide answers the core architectural questions you need to resolve first:
 > - **What are you actually downloading?** Why "open weights" (`customizable binary`) is different from "open source" (`weights + code + auditable training data`), and how to avoid hidden valuation, MAU, and non-commercial adapter traps.

@@ -2175,7 +2175,7 @@ HTML_TEMPLATE = f"""<!DOCTYPE html>
       <div class="yt-spot-meta">
         <div class="yt-spot-top">
           <span class="yt-eyebrow">🎬 5-Minute Executive Overview · Start Here</span>
-          <a class="yt-ext-link" href="https://youtu.be/jxbvqmRBcAo" target="_blank" rel="noopener noreferrer">Watch on YouTube ↗</a>
+          <a class="yt-ext-link" href="https://youtu.be/qcz1GhjCBOw" target="_blank" rel="noopener noreferrer">Watch on YouTube ↗</a>
         </div>
         <h2 class="yt-spot-title">Prefer to watch first? Get the strategy, trade-offs &amp; 3-calculator tour in 5 minutes</h2>
         <p class="yt-spot-sub">Narrated by <strong>Kanchana Patlolla</strong> — why open weights run 56% of tokens at 14% of spend, hidden valuation &amp; MAU license traps, the <strong>73% GPU utilization rule</strong>, and how to use all three live calculators below. Click any chapter to jump right in:</p>
@@ -2529,7 +2529,7 @@ HTML_TEMPLATE = f"""<!DOCTYPE html>
           <div style="display:flex;flex-direction:column;gap:8px;margin-top:10px;">
             <div style="display:flex;gap:8px;">
               <button type="button" class="util-btn" style="flex:1;justify-content:center;background:#0F172A;color:#FFFFFF;border-color:#0F172A;font-weight:600;" onclick="playExplainerAt(0, true, null)">▶ Watch Part 1 Video (5:01)</button>
-              <a class="util-btn" style="text-decoration:none;font-weight:600;" href="https://youtu.be/jxbvqmRBcAo" target="_blank" rel="noopener noreferrer">YouTube ↗</a>
+              <a class="util-btn" style="text-decoration:none;font-weight:600;" href="https://youtu.be/qcz1GhjCBOw" target="_blank" rel="noopener noreferrer">YouTube ↗</a>
             </div>
             <button type="button" class="util-btn" style="width:100%;justify-content:center;background:#EFF6FF;color:#1D4ED8;border-color:#BFDBFE;font-weight:600;" onclick="switchView('view-enterprise')">📖 Read Part 1 Whitepaper &amp; Interactive Tools →</button>
           </div>
@@ -3038,8 +3038,8 @@ function playExplainerAt(startSec, shouldScroll, btnEl) {{
   const proto = String(window.location.protocol || "");
   if ((proto !== "https:" && proto !== "http:") || !originStr || originStr === "null") {{
     const extUrl = safeStart > 0
-      ? "https://youtu.be/jxbvqmRBcAo?t=" + String(safeStart)
-      : "https://youtu.be/jxbvqmRBcAo";
+      ? "https://youtu.be/qcz1GhjCBOw?t=" + String(safeStart)
+      : "https://youtu.be/qcz1GhjCBOw";
     window.open(extUrl, "_blank", "noopener,noreferrer");
     return;
   }}
@@ -3051,7 +3051,7 @@ function playExplainerAt(startSec, shouldScroll, btnEl) {{
   const iframe = document.createElement("iframe");
   iframe.setAttribute(
     "src",
-    "https://www.youtube-nocookie.com/embed/jxbvqmRBcAo?autoplay=1&rel=0&modestbranding=1&playsinline=1&start=" + String(safeStart)
+    "https://www.youtube-nocookie.com/embed/qcz1GhjCBOw?autoplay=1&rel=0&modestbranding=1&playsinline=1&start=" + String(safeStart)
   );
   iframe.setAttribute("title", "Open-Weight AI Models for Enterprise Architects — 5-Minute Explainer");
   iframe.setAttribute("allow", "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share");
