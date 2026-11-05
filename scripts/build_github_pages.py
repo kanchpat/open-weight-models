@@ -373,6 +373,17 @@ HTML_TEMPLATE = f"""<!DOCTYPE html>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Open-Weight AI Models on Google Cloud — Unofficial Enterprise Architect's Guide</title>
+<meta name="description" content="Interactive enterprise architecture playbook, FinOps 73% duty-cycle calculator, license-triage filter, 5-minute explainer video, and 7-part Google Cloud code series for open-weight AI models.">
+<link rel="canonical" href="https://openweights.cloudrace.info/">
+<meta property="og:title" content="Open-Weight AI Models — Enterprise Architect's Playbook &amp; Toolkit">
+<meta property="og:description" content="56% of gateway tokens at 14% of spend: interactive license filter, 73% GPU duty-cycle FinOps calculator, 5-min video walkthrough, and 7-part Google Cloud code series.">
+<meta property="og:url" content="https://openweights.cloudrace.info/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://openweights.cloudrace.info/assets/youtube_explainer_thumbnail.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Open-Weight AI Models — Enterprise Architect's Playbook &amp; Toolkit">
+<meta name="twitter:description" content="Interactive license filter, 73% GPU duty-cycle FinOps calculator, 5-min explainer video, and 7-part Google Cloud code series.">
+<meta name="twitter:image" content="https://openweights.cloudrace.info/assets/youtube_explainer_thumbnail.jpg">
 <style>
   :root {{
     --bg-app: #FFFFFF;
@@ -2597,7 +2608,7 @@ HTML_TEMPLATE = f"""<!DOCTYPE html>
       <a href="https://github.com/kanchpat/open-weight-models" target="_blank" rel="noopener">GitHub Repository (Apache 2.0) ↗</a>
     </div>
     <div>
-      <strong>⚠️ Unofficial Google / Google Cloud Guide Disclaimer:</strong> This website (<code>kanchpat.github.io/open-weight-models</code>) and companion repository are an independent, <strong>unofficial practitioner &amp; community guide</strong>. This is <strong>not</strong> an officially supported Google product, official Google Cloud documentation, or an official statement on behalf of Google LLC. All opinions, architectural recommendations, FinOps cost estimates, and model license summaries (provided for informational planning only and not legal advice) are strictly the authors' own.
+      <strong>⚠️ Unofficial Google / Google Cloud Guide Disclaimer:</strong> This website (<code>openweights.cloudrace.info</code>) and companion repository are an independent, <strong>unofficial practitioner &amp; community guide</strong>. This is <strong>not</strong> an officially supported Google product, official Google Cloud documentation, or an official statement on behalf of Google LLC. All opinions, architectural recommendations, FinOps cost estimates, and model license summaries (provided for informational planning only and not legal advice) are strictly the authors' own.
     </div>
   </div>
 </footer>
@@ -3136,5 +3147,11 @@ onScrollSpy();
 out_html_path = os.path.join(DOCS_DIR, "index.html")
 with open(out_html_path, "w", encoding="utf-8") as f:
     f.write(HTML_TEMPLATE)
+
+with open(os.path.join(DOCS_DIR, "CNAME"), "w", encoding="utf-8") as f:
+    f.write("openweights.cloudrace.info\n")
+
+with open(os.path.join(DOCS_DIR, ".nojekyll"), "w", encoding="utf-8") as f:
+    f.write("")
 
 print("Built 3-pane Claude-Docs-style GitHub Pages prototype at:", out_html_path, "Size:", os.path.getsize(out_html_path))

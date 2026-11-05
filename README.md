@@ -3,7 +3,7 @@
 An interactive enterprise architecture playbook, zero-dependency FinOps & license-triage calculator suite, and 7-part code series for evaluating, governing, and deploying open-weight AI models (`Gemma 4`, `Olmo 3`, `Qwen 3.8`, `DeepSeek-V4.1-Flash`, `Mistral Large 4`, and `System 1` decision heads) on [Google Cloud](https://cloud.google.com/vertex-ai). Open the live site in your browser with zero setup, or clone this repository to preview offline, edit the Markdown whitepaper, rebuild the single-file interactive bundle, and run the weekly series code starters.
 
 [![Deploy GitHub Pages](https://github.com/kanchpat/open-weight-models/actions/workflows/pages.yml/badge.svg)](https://github.com/kanchpat/open-weight-models/actions/workflows/pages.yml)
-[![Live Interactive Site](https://img.shields.io/badge/GitHub%20Pages-Live%20Interactive%20Playbook-0B57D0)](https://kanchpat.github.io/open-weight-models/)
+[![Live Interactive Site](https://img.shields.io/badge/Live%20Site-openweights.cloudrace.info-0B57D0)](https://openweights.cloudrace.info/)
 [![Watch 5-Min Overview](https://img.shields.io/badge/YouTube-Watch%205--Min%20Overview-DC2626?logo=youtube&logoColor=white)](https://youtu.be/jxbvqmRBcAo)
 [![Unofficial Guide](https://img.shields.io/badge/Notice-Unofficial%20Practitioner%20Guide-D97706)](#disclaimer--attribution)
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-16A34A)](LICENSE)
@@ -44,7 +44,7 @@ An interactive enterprise architecture playbook, zero-dependency FinOps & licens
 ## Installation
 
 **Option A — Zero-Install Browser App (fastest):**  
-Open **[https://kanchpat.github.io/open-weight-models/](https://kanchpat.github.io/open-weight-models/)** directly in any browser. All infographics and calculators are bundled inline with zero external CDN requests.
+Open **[https://openweights.cloudrace.info/](https://openweights.cloudrace.info/)** *(also auto-redirects from [kanchpat.github.io/open-weight-models](https://kanchpat.github.io/open-weight-models/))* directly in any browser. All infographics and calculators are bundled inline with zero external CDN requests.
 
 **Option B — Clone Locally:**  
 Requires `git` and **Python 3.10+** (Python standard library only — no `pip install` needed for the playbook or interactive toolkit):
@@ -128,6 +128,7 @@ open-weight-models/
 ├── .github/workflows/pages.yml                 # Automated GitHub Pages deployment on push to main
 ├── docs/                                       # Published GitHub Pages bundle (zero external CDNs)
 │   ├── index.html                              # Generated interactive playbook + FinOps calculators
+│   ├── CNAME                                   # Custom domain (openweights.cloudrace.info)
 │   ├── .nojekyll                               # Serves static assets verbatim on GitHub Pages
 │   └── assets/                                 # Source architecture diagrams & hero artwork
 ├── whitepaper/
@@ -145,16 +146,16 @@ open-weight-models/
 
 ## Publishing
 
-Maintainers deploy updates automatically to GitHub Pages via [`.github/workflows/pages.yml`](.github/workflows/pages.yml) (no npm, PyPI, or container registry publish step applies to the documentation hub):
+Maintainers deploy updates automatically to GitHub Pages (`openweights.cloudrace.info` via `CNAME` → `kanchpat.github.io`) through [`.github/workflows/pages.yml`](.github/workflows/pages.yml) (no npm, PyPI, or container registry publish step applies to the documentation hub):
 
 ```bash
 python3 scripts/build_github_pages.py
-git add whitepaper/enterprise-playbook.md scripts/build_github_pages.py docs/index.html series/
+git add whitepaper/enterprise-playbook.md scripts/build_github_pages.py docs/index.html docs/CNAME series/
 git commit -m "docs: update playbook and rebuild GitHub Pages bundle"
 git push origin main
 ```
 
-Every push to `main` packages `docs/` as a Pages artifact and deploys live to **`https://kanchpat.github.io/open-weight-models/`** in ~25 seconds.
+Every push to `main` packages `docs/` as a Pages artifact and deploys live to **`https://openweights.cloudrace.info/`** in ~25 seconds.
 
 ## Troubleshooting
 
@@ -175,5 +176,5 @@ Licensed under the **Apache License 2.0** — see [`LICENSE`](LICENSE) for full 
 ## Disclaimer & Attribution
 
 - **Authors & Contributors:** Authored and built by **Kanchana Patlolla** and **Anusha Sabbineni**, with guidance from **Alan Blount**.
-- **Unofficial Google Guide:** This repository (`kanchpat/open-weight-models`) and companion website (`kanchpat.github.io/open-weight-models`) are an **unofficial community & practitioner guide**. **This is not an officially supported Google product**, nor is it an official Google or Google Cloud publication, documentation set, or endorsement.
+- **Unofficial Google Guide:** This repository (`kanchpat/open-weight-models`) and companion website (`openweights.cloudrace.info`) are an **unofficial community & practitioner guide**. **This is not an officially supported Google product**, nor is it an official Google or Google Cloud publication, documentation set, or endorsement.
 - **No Legal or Financial Advice:** All opinions, architectural recommendations, FinOps cost estimates, and model licensing summaries are strictly the authors' own and are provided *as-is* for informational planning only. Always consult qualified legal counsel before deploying open-weight models in commercial production.
