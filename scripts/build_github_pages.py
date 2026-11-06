@@ -1434,51 +1434,8 @@ HTML_TEMPLATE = f"""<!DOCTYPE html>
   }}
 
   /* =========================================================
-     7. 11 OPEN-WEIGHT MODELS CATALOG & FILTER PILLS
+     7. WARM CARD ACCENT SURFACES
      ========================================================= */
-  .filter-bar {{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 20px;
-  }}
-  .model-filter-btn {{
-    padding: 7px 14px;
-    border-radius: 999px;
-    font-size: 12.5px;
-    font-weight: 600;
-    background: var(--surface-container);
-    border: 1px solid var(--outline-variant);
-    color: var(--on-surface);
-    cursor: pointer;
-    transition: all 0.14s ease;
-  }}
-  .model-filter-btn:hover {{ border-color: var(--coral); color: var(--coral); }}
-  .model-filter-btn.active {{
-    background: var(--coral);
-    border-color: var(--coral);
-    color: #FFFFFF;
-    box-shadow: var(--shadow-xs);
-  }}
-
-  .models-grid {{
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 16px;
-  }}
-  @media (max-width: 900px) {{ .models-grid {{ grid-template-columns: repeat(2, minmax(0, 1fr)); }} }}
-  @media (max-width: 580px) {{ .models-grid {{ grid-template-columns: 1fr; }} }}
-
-  .model-card {{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 18px;
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-xs);
-    transition: all 0.16s ease;
-  }}
-  .model-card:hover {{ transform: translateY(-2px); box-shadow: var(--shadow-md); }}
   .mc-coral {{ background: linear-gradient(135deg, #FFFFFF 0%, #FCFAF7 55%, #FFF5ED 100%); border: 1px solid #EFE2D2; }}
   .mc-coral:hover {{ border-color: var(--coral); }}
   .mc-green {{ background: linear-gradient(135deg, #FFFFFF 0%, #FCFAF7 55%, #F2F8F4 100%); border: 1px solid #E0EFE5; }}
@@ -1489,61 +1446,6 @@ HTML_TEMPLATE = f"""<!DOCTYPE html>
   .mc-plum:hover {{ border-color: var(--plum); }}
   .mc-red {{ background: linear-gradient(135deg, #FFFFFF 0%, #FCFAF7 55%, #FFF0F0 100%); border: 1px solid #FADBD8; }}
   .mc-red:hover {{ border-color: var(--danger); }}
-
-  .mc-top {{
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 8px;
-    margin-bottom: 6px;
-  }}
-  .mc-name {{
-    font-family: var(--font-headline);
-    font-size: 17.5px;
-    line-height: 1.25;
-    font-weight: 700;
-    color: var(--forest);
-    margin: 0;
-  }}
-  .mc-lic {{
-    font-family: var(--font-code);
-    font-size: 11px;
-    font-weight: 600;
-    padding: 2px 7px;
-    border-radius: var(--radius-sm);
-    white-space: nowrap;
-    flex-shrink: 0;
-  }}
-  .mc-arch {{
-    font-size: 12.5px;
-    font-weight: 600;
-    color: var(--on-surface-variant);
-    margin-bottom: 8px;
-  }}
-  .mc-body {{
-    font-size: 13px;
-    color: var(--on-surface);
-    line-height: 1.5;
-    margin: 0 0 12px 0;
-  }}
-  .mc-foot {{
-    padding-top: 10px;
-    border-top: 1px solid var(--outline-variant);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 8px;
-    font-size: 11.5px;
-  }}
-  .mc-cloud {{
-    font-family: var(--font-code);
-    color: var(--on-surface-variant);
-    font-weight: 500;
-  }}
-  .mc-link {{
-    font-weight: 700;
-    white-space: nowrap;
-  }}
 
   /* =========================================================
      8. LICENSE & AUDITABILITY TRIAGE (4 Dropdowns + All Models)
@@ -2219,7 +2121,6 @@ HTML_TEMPLATE = f"""<!DOCTYPE html>
     <nav class="toolkit-dock" aria-label="Quick Jump Toolkit">
       <a href="#quick-calculators" class="dock-tab"><span class="c-coral">{SVG_CALC}</span><span>FinOps TCO</span></a>
       <a href="#license-filter" class="dock-tab"><span class="c-success">{SVG_SHIELD}</span><span>License Triage</span></a>
-      <a href="#models-matrix" class="dock-tab"><span class="c-plum">{SVG_CUBE}</span><span>11 Models</span></a>
       <a href="#workload-router" class="dock-tab"><span class="c-amber">{SVG_ROUTE}</span><span>Workload Router</span></a>
       <a href="#full-playbook" class="dock-tab"><span class="c-forest">{SVG_BOOK}</span><span>Full Playbook</span></a>
     </nav>
@@ -2250,7 +2151,6 @@ HTML_TEMPLATE = f"""<!DOCTYPE html>
 <nav class="mobile-jump-bar" aria-label="Mobile Quick Navigation">
   <a href="#video-briefing">▶ 5-Min Video</a>
   <a href="#quick-calculators">⚡ FinOps TCO</a>
-  <a href="#models-matrix">11 Models</a>
   <a href="#license-filter">⚡ License Triage</a>
   <a href="#industry-patterns">5 Patterns</a>
   <a href="#workload-router">2×2 Router</a>
@@ -2273,7 +2173,6 @@ HTML_TEMPLATE = f"""<!DOCTYPE html>
         <a href="#video-briefing" class="toc-item" data-spy="video-briefing"><span class="toc-dot"></span><span>5-Min Video Briefing</span></a>
         <a href="#five-questions" class="toc-item" data-spy="five-questions"><span class="toc-dot"></span><span>5 Architect Inquiries</span></a>
         <a href="#quick-calculators" class="toc-item" data-spy="quick-calculators"><span class="toc-dot"></span><span>FinOps 73% Duty Rule</span></a>
-        <a href="#models-matrix" class="toc-item" data-spy="models-matrix"><span class="toc-dot"></span><span>11 Frontier Checkpoints</span></a>
         <a href="#license-filter" class="toc-item" data-spy="license-filter"><span class="toc-dot"></span><span>Interactive License Triage</span></a>
         <a href="#industry-patterns" class="toc-item" data-spy="industry-patterns"><span class="toc-dot"></span><span>5 Industry Patterns</span></a>
         <a href="#workload-router" class="toc-item" data-spy="workload-router"><span class="toc-dot"></span><span>2×2 Workload Router</span></a>
@@ -2350,9 +2249,9 @@ HTML_TEMPLATE = f"""<!DOCTYPE html>
             {SVG_CALC}
             <span>Open FinOps Calculator</span>
           </a>
-          <a href="#models-matrix" class="btn-secondary-warm">
-            {SVG_TUNE}
-            <span>Filter 11 Models</span>
+          <a href="#license-filter" class="btn-secondary-warm">
+            {SVG_SHIELD}
+            <span>License &amp; Data Triage</span>
           </a>
           <button type="button" class="btn-video-ghost" id="hero-video-btn">
             {SVG_PLAY}
@@ -2532,193 +2431,6 @@ HTML_TEMPLATE = f"""<!DOCTYPE html>
       </div>
     </section>
 
-    <!-- 02 · MODEL CATALOG: 11 OPEN-WEIGHT MODELS -->
-    <section id="models-matrix">
-      <div class="sec-header">
-        <div>
-          <span class="sec-eyebrow">02 · MODEL CATALOG</span>
-          <h2 class="sec-h2">11 Open-Weight Models Covered</h2>
-          <p class="sec-sub">Filter by commercial license posture, pre-training provenance tier, or Google Cloud runtime surface.</p>
-        </div>
-      </div>
-
-      <div class="filter-bar" id="model-filter-bar">
-        <button type="button" class="model-filter-btn active" data-filter="all">All Models (11)</button>
-        <button type="button" class="model-filter-btn" data-filter="permissive">🟢 Unrestricted Apache 2.0 / MIT</button>
-        <button type="button" class="model-filter-btn" data-filter="gcp">☁️ Vertex AI &amp; Cloud Run</button>
-        <button type="button" class="model-filter-btn" data-filter="tier4">🔍 Tier 4 Auditable Data Lineage</button>
-        <button type="button" class="model-filter-btn" data-filter="system1">⚡ System 1 Single-Pass (tokens: 0)</button>
-        <button type="button" class="model-filter-btn" data-filter="capped">⚠️ Commercial / Valuation Caps</button>
-      </div>
-
-      <div class="models-grid" id="models-container">
-        <article class="model-card mc-coral" data-category="permissive gcp">
-          <div>
-            <div class="mc-top">
-              <h3 class="mc-name">Google Gemma 4</h3>
-              <span class="mc-lic pill-green">Apache 2.0</span>
-            </div>
-            <div class="mc-arch">31B Dense · MoE 26B-A4B · Edge E4B · MedGemma QAT</div>
-            <p class="mc-body">Zero tool-calling drift under FP4/INT4 Quantization-Aware Training. Prime teacher-student distillation target (&lt;150 ms TTFT).</p>
-          </div>
-          <div class="mc-foot">
-            <span class="mc-cloud">☁️ Vertex OpenMaaS · Cloud Run</span>
-            <a href="https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/open-models/use-gemma" target="_blank" rel="noopener noreferrer" class="mc-link" style="color:var(--coral);">Docs ↗</a>
-          </div>
-        </article>
-
-        <article class="model-card mc-green" data-category="permissive gcp tier4">
-          <div>
-            <div class="mc-top">
-              <h3 class="mc-name">Ai2 Olmo 3 &amp; Tülu 3</h3>
-              <span class="mc-lic pill-green">OpenMDW</span>
-            </div>
-            <div class="mc-arch">32B Dense · Full Dolma 3 Corpus + RLVR Code</div>
-            <p class="mc-body">Gold-standard EU AI Act &amp; copyright auditability with line-by-line pre-training data lineage and open filtering recipes.</p>
-          </div>
-          <div class="mc-foot">
-            <span class="mc-cloud">☁️ Model Garden · Agent VPC</span>
-            <a href="https://arxiv.org/abs/2512.13961" target="_blank" rel="noopener noreferrer" class="mc-link" style="color:var(--success);">arXiv ↗</a>
-          </div>
-        </article>
-
-        <article class="model-card mc-amber" data-category="permissive gcp">
-          <div>
-            <div class="mc-top">
-              <h3 class="mc-name">DeepSeek-V4.1-Flash</h3>
-              <span class="mc-lic pill-green">MIT</span>
-            </div>
-            <div class="mc-arch">763B Total / 8B–16B Active MoE · CSA2</div>
-            <p class="mc-body">437× KV-cache compression (10 MB @ 128K context); 76× lower coding &amp; math agent token cost ($0.72 vs $55.00).</p>
-          </div>
-          <div class="mc-foot">
-            <span class="mc-cloud">☁️ Vertex OpenMaaS · ADK Router</span>
-            <a href="https://arxiv.org/pdf/2609.19969" target="_blank" rel="noopener noreferrer" class="mc-link" style="color:var(--amber-deep);">Paper ↗</a>
-          </div>
-        </article>
-
-        <article class="model-card mc-coral" data-category="permissive gcp">
-          <div>
-            <div class="mc-top">
-              <h3 class="mc-name">Alibaba Qwen 3.8</h3>
-              <span class="mc-lic pill-green">Apache 2.0</span>
-            </div>
-            <div class="mc-arch">27B Dense &amp; Flash-Next 180B-A6B MoE</div>
-            <p class="mc-body">High-throughput multilingual &amp; coding workhorse. Preferred base for Pinterest-style surgical vision encoder grafting.</p>
-          </div>
-          <div class="mc-foot">
-            <span class="mc-cloud">☁️ Vertex OpenMaaS · Cloud Run</span>
-            <a href="https://qwen.ai/blog?id=qwen3.8-flash-next" target="_blank" rel="noopener noreferrer" class="mc-link" style="color:var(--coral);">Report ↗</a>
-          </div>
-        </article>
-
-        <article class="model-card mc-plum" data-category="permissive gcp">
-          <div>
-            <div class="mc-top">
-              <h3 class="mc-name">Mistral Large 4 &amp; Timestral</h3>
-              <span class="mc-lic pill-green">Apache 2.0</span>
-            </div>
-            <div class="mc-arch">1T Total / 52B Active MoE · 380M Series</div>
-            <p class="mc-body">93.3% Lakera B3 adversarial safety defense score; Timestral runs zero-shot forecasting at 5,000 series/s (Mod-MIT weights).</p>
-          </div>
-          <div class="mc-foot">
-            <span class="mc-cloud">☁️ Model Garden · Cloud Run</span>
-            <a href="https://mistral.ai/news/mistral-large-4" target="_blank" rel="noopener noreferrer" class="mc-link" style="color:var(--plum);">Blog ↗</a>
-          </div>
-        </article>
-
-        <article class="model-card mc-coral" data-category="permissive gcp">
-          <div>
-            <div class="mc-top">
-              <h3 class="mc-name">Reflection AI Beam 1.0</h3>
-              <span class="mc-lic pill-green">Apache 2.0</span>
-            </div>
-            <div class="mc-arch">501B Total / 23B Active Sparse MoE</div>
-            <p class="mc-body">US-origin frontier open-weight MoE engineered for multi-step enterprise agentic reasoning and self-reflection.</p>
-          </div>
-          <div class="mc-foot">
-            <span class="mc-cloud">☁️ Model Garden · Agent Runtime</span>
-            <a href="https://reflection.ai/blog/introducing-beam" target="_blank" rel="noopener noreferrer" class="mc-link" style="color:var(--coral);">Blog ↗</a>
-          </div>
-        </article>
-
-        <article class="model-card mc-green" data-category="permissive gcp tier4">
-          <div>
-            <div class="mc-top">
-              <h3 class="mc-name">Aleph Alpha Kolibri</h3>
-              <span class="mc-lic pill-green">Tier IV Sovereign</span>
-            </div>
-            <div class="mc-arch">78B Total / 3.5B Active MoE · Merlin-Arthur</div>
-            <p class="mc-body">European sovereign Apache 2.0 MoE with cryptographic citation verification and 44% ungrounded abstention.</p>
-          </div>
-          <div class="mc-foot">
-            <span class="mc-cloud">☁️ EU Sovereign In-VPC Runtime</span>
-            <a href="https://aleph-alpha.com/en/blog/kolibri-has-landed-a-sovereign-open-weight-model/" target="_blank" rel="noopener noreferrer" class="mc-link" style="color:var(--forest);">Blog ↗</a>
-          </div>
-        </article>
-
-        <article class="model-card mc-plum" data-category="permissive gcp system1">
-          <div>
-            <div class="mc-top">
-              <h3 class="mc-name">System 1 Decision Models</h3>
-              <span class="mc-lic pill-green">Apache 2.0</span>
-            </div>
-            <div class="mc-arch">0.6B–4B Single Forward Pass (tokens: 0)</div>
-            <p class="mc-body">dgem, Clef, Clairic &amp; Decision-1: 35× faster (5.8–84 ms p50) and 200× cheaper rubric verification, routing, and triage.</p>
-          </div>
-          <div class="mc-foot">
-            <span class="mc-cloud">☁️ ADK Gate · Cloud Run</span>
-            <a href="https://blog.cloudflare.com/clef-decision-models/" target="_blank" rel="noopener noreferrer" class="mc-link" style="color:var(--plum);">Blog ↗</a>
-          </div>
-        </article>
-
-        <article class="model-card mc-amber" data-category="gcp capped">
-          <div>
-            <div class="mc-top">
-              <h3 class="mc-name">Meta Llama 4 (Maverick)</h3>
-              <span class="mc-lic pill-amber">700M MAU Cap</span>
-            </div>
-            <div class="mc-arch">Multimodal Native MoE (17B Active)</div>
-            <p class="mc-body">Broad ecosystem compatibility; triggers mandatory commercial license deal above 700M MAU and requires &#39;Llama&#39; naming prefix.</p>
-          </div>
-          <div class="mc-foot">
-            <span class="mc-cloud">☁️ Vertex AI Model Garden</span>
-            <a href="#2-procurement-licensing-triage" class="mc-link" style="color:var(--amber-deep);">License ↓</a>
-          </div>
-        </article>
-
-        <article class="model-card mc-amber" data-category="capped">
-          <div>
-            <div class="mc-top">
-              <h3 class="mc-name">Moonshot Kimi K3.1 Pro</h3>
-              <span class="mc-lic pill-amber">100M MAU Cap</span>
-            </div>
-            <div class="mc-arch">1T+ Sparse MoE · Long-Horizon Agent</div>
-            <p class="mc-body">Leading deep-research and tool-use benchmarks; commercial deal required above 100M MAU or $20M/mo inference revenue.</p>
-          </div>
-          <div class="mc-foot">
-            <span class="mc-cloud">☁️ Self-Hosted vLLM on GKE</span>
-            <a href="https://www.kimi.ai/blog/kimi-k3-1-pro" target="_blank" rel="noopener noreferrer" class="mc-link" style="color:var(--amber-deep);">Blog ↗</a>
-          </div>
-        </article>
-
-        <article class="model-card mc-red" data-category="capped">
-          <div>
-            <div class="mc-top">
-              <h3 class="mc-name">Zhipu GLM-5.3-Flash</h3>
-              <span class="mc-lic pill-red">$10B Val Gate</span>
-            </div>
-            <div class="mc-arch">320B Total / 18B Active MoE</div>
-            <p class="mc-body">Fast agentic coding execution, but triggers mandatory commercial &amp; security agreement if corporate valuation &gt;= $10B.</p>
-          </div>
-          <div class="mc-foot">
-            <span class="mc-cloud">☁️ Commercial Gate Required</span>
-            <a href="https://huggingface.co/zai-org/GLM-5.3/blob/main/LICENSE" target="_blank" rel="noopener noreferrer" class="mc-link" style="color:var(--danger);">License ↗</a>
-          </div>
-        </article>
-      </div>
-    </section>
-
     <!-- INTERACTIVE LICENSE & DATA AUDITABILITY TRIAGE (§2.1) -->
     <section id="license-filter" class="workbench-card">
       <div class="wb-head">
@@ -2780,11 +2492,11 @@ HTML_TEMPLATE = f"""<!DOCTYPE html>
       <div class="triage-list" id="license-results-list"></div>
     </section>
 
-    <!-- 03 · PRODUCTION PATTERNS: 5 INDUSTRY ARCHITECTURES -->
+    <!-- 02 · PRODUCTION PATTERNS: 5 INDUSTRY ARCHITECTURES -->
     <section id="industry-patterns">
       <div class="sec-header">
         <div>
-          <span class="sec-eyebrow">03 · PRODUCTION PATTERNS</span>
+          <span class="sec-eyebrow">02 · PRODUCTION PATTERNS</span>
           <h2 class="sec-h2">5 Battle-Tested Industry Architectures</h2>
           <p class="sec-sub">Production deployments linking directly to engineering blogs from Netflix, Pinterest, Harvey, DoorDash, Coinbase, and Uber.</p>
         </div>
@@ -2943,11 +2655,11 @@ HTML_TEMPLATE = f"""<!DOCTYPE html>
       </div>
     </section>
 
-    <!-- 04 · DEEP-DIVE WHITEPAPER CHAPTERS, INFOGRAPHICS & REFERENCES (§1–§8) -->
+    <!-- 03 · DEEP-DIVE WHITEPAPER CHAPTERS, INFOGRAPHICS & REFERENCES (§1–§8) -->
     <section id="full-playbook">
       <div class="sec-header">
         <div>
-          <span class="sec-eyebrow">04 · COMPLETE PRACTITIONER WHITEPAPER (§1–§8)</span>
+          <span class="sec-eyebrow">03 · COMPLETE PRACTITIONER WHITEPAPER (§1–§8)</span>
           <h2 class="sec-h2">Architecture Deep-Dive, Infographics &amp; Primary Sources</h2>
           <p class="sec-sub">Full release-tier specifications, three-layer runtime architecture, 7 operational risk mitigations, and cited bibliography ([1]–[20]).</p>
         </div>
@@ -3222,25 +2934,7 @@ HTML_TEMPLATE = f"""<!DOCTYPE html>
   dutySlider.addEventListener("input", updateFinOps);
   updateFinOps();
 
-  // 3. 11 MODELS FILTER PILLS
-  const allowedFilters = {{ all: true, permissive: true, gcp: true, tier4: true, system1: true, capped: true }};
-  const filterBtns = document.querySelectorAll(".model-filter-btn");
-  const modelCards = document.querySelectorAll(".model-card");
-
-  filterBtns.forEach(function (btn) {{
-    btn.addEventListener("click", function () {{
-      const rawFilter = btn.getAttribute("data-filter") || "all";
-      const filter = allowedFilters[rawFilter] ? rawFilter : "all";
-      filterBtns.forEach(function (b) {{ b.classList.remove("active"); }});
-      btn.classList.add("active");
-      modelCards.forEach(function (card) {{
-        const cats = (card.getAttribute("data-category") || "").split(" ");
-        card.style.display = (filter === "all" || cats.indexOf(filter) !== -1) ? "flex" : "none";
-      }});
-    }});
-  }});
-
-  // 4. LICENSE & DATA AUDITABILITY TRIAGE (All 11 Cohorts, Safe DOM Construction)
+  // 3. LICENSE & DATA AUDITABILITY TRIAGE (All 11 Cohorts, Safe DOM Construction)
   const LICENSE_MODELS = [
     {{ name: "Google Gemma 4 (31B / 26B-A4B / E4B / MedGemma)", license: "Apache 2.0", origin: "US", auditLevel: 2, cap10b: false, cap100m: false, cap700m: false, ncAdapter: false, note: "Apache 2.0 + explicit patent grant · US Origin · Open QAT Recipe · Vertex AI OpenMaaS" }},
     {{ name: "Ai2 Olmo 3 (32B Think) & Tülu 3", license: "Apache 2.0 / OpenMDW", origin: "US", auditLevel: 3, cap10b: false, cap100m: false, cap700m: false, ncAdapter: false, note: "OpenMDW · US Origin · 100% Auditable Dolma 3 Pre-Training Corpus & Code (Tier 4)" }},
