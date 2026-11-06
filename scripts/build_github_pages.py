@@ -1065,18 +1065,8 @@ HTML_TEMPLATE = f"""<!DOCTYPE html>
     background: linear-gradient(135deg, #FFFFFF 0%, #FFFBF7 55%, #FFF5ED 100%);
     border: 1px solid #EFE2D2;
     border-radius: var(--radius-xl);
-    padding: 22px 24px;
+    padding: 14px;
     box-shadow: var(--shadow-xs);
-    display: grid;
-    grid-template-columns: minmax(290px, 390px) minmax(0, 1fr);
-    gap: 24px;
-    align-items: center;
-  }}
-  .video-card.is-playing {{
-    grid-template-columns: minmax(320px, 470px) minmax(0, 1fr);
-  }}
-  @media (max-width: 900px) {{
-    .video-card, .video-card.is-playing {{ grid-template-columns: 1fr; }}
   }}
   .yt-stage {{
     position: relative;
@@ -1114,16 +1104,16 @@ HTML_TEMPLATE = f"""<!DOCTYPE html>
     transition: transform 0.24s ease, filter 0.24s ease;
   }}
   .yt-poster-btn:hover img {{
-    transform: scale(1.025);
-    filter: brightness(1.05);
+    transform: scale(1.018);
+    filter: brightness(1.04);
   }}
   .yt-play-circle {{
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 60px;
-    height: 60px;
+    width: 68px;
+    height: 68px;
     border-radius: 50%;
     background: rgba(200, 80, 40, 0.94);
     border: 2.5px solid #FFF8E7;
@@ -1136,115 +1126,19 @@ HTML_TEMPLATE = f"""<!DOCTYPE html>
     transform: translate(-50%, -50%) scale(1.08);
     background: var(--coral-bright);
   }}
-  .yt-play-circle svg {{ width: 24px; height: 24px; fill: #FFFFFF; margin-left: 3px; }}
+  .yt-play-circle svg {{ width: 26px; height: 26px; fill: #FFFFFF; margin-left: 3px; }}
   .yt-dur-pill {{
     position: absolute;
-    right: 10px;
-    bottom: 10px;
+    right: 12px;
+    bottom: 12px;
     background: rgba(22, 34, 29, 0.90);
     color: #FAF8F5;
     border: 1px solid rgba(217, 130, 43, 0.45);
     font-family: var(--font-code);
-    font-size: 11px;
-    font-weight: 600;
-    padding: 2px 8px;
-    border-radius: 6px;
-  }}
-  .yt-meta-head {{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 8px;
-  }}
-  .yt-tag {{
-    font-family: var(--font-code);
     font-size: 11.5px;
     font-weight: 600;
-    color: var(--coral);
-    background: var(--surface-highlight);
-    border: 1px solid #F5D5C5;
-    padding: 3px 10px;
-    border-radius: 999px;
-  }}
-  .yt-ext {{
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--forest);
-    background: #FFFFFF;
-    border: 1px solid var(--outline);
-    padding: 4px 11px;
-    border-radius: 999px;
-    text-decoration: none;
-  }}
-  .yt-ext:hover {{
-    border-color: var(--coral);
-    color: var(--coral);
-    text-decoration: none;
-  }}
-  .yt-title {{
-    font-family: var(--font-headline);
-    font-size: 20px;
-    line-height: 1.28;
-    font-weight: 700;
-    color: var(--forest);
-    margin: 0 0 6px 0;
-  }}
-  .yt-desc {{
-    font-size: 13.5px;
-    color: var(--on-surface-variant);
-    margin: 0 0 12px 0;
-  }}
-  .yt-chapters {{
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 7px;
-  }}
-  @media (max-width: 640px) {{
-    .yt-chapters {{ grid-template-columns: repeat(2, minmax(0, 1fr)); }}
-  }}
-  .yt-chap-btn {{
-    display: flex;
-    align-items: center;
-    gap: 7px;
-    padding: 6px 9px;
-    border-radius: var(--radius);
-    background: #FFFFFF;
-    border: 1px solid var(--outline-variant);
-    color: var(--on-surface);
-    font-size: 12px;
-    font-weight: 600;
-    cursor: pointer;
-    text-align: left;
-    transition: all 0.14s ease;
-  }}
-  .yt-chap-btn:hover, .yt-chap-btn.active {{
-    border-color: var(--coral);
-    background: var(--surface-highlight);
-    color: var(--coral);
-  }}
-  .yt-chap-time {{
-    font-family: var(--font-code);
-    font-size: 10.5px;
-    font-weight: 600;
-    color: var(--coral);
-    background: var(--surface-highlight);
-    padding: 1px 5px;
-    border-radius: 4px;
-    flex-shrink: 0;
-  }}
-  .yt-chap-btn.active .yt-chap-time {{
-    background: var(--coral);
-    color: #FFFFFF;
-  }}
-  .yt-chap-lbl {{
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    padding: 3px 9px;
+    border-radius: 6px;
   }}
 
   /* =========================================================
@@ -2479,27 +2373,6 @@ HTML_TEMPLATE = f"""<!DOCTYPE html>
           <span class="yt-dur-pill">▶ 05:01</span>
         </button>
       </div>
-      <div>
-        <div class="yt-meta-head">
-          <span class="yt-tag">🎬 5-MIN EXECUTIVE DISPATCH · START HERE</span>
-          <a href="https://youtu.be/qcz1GhjCBOw" target="_blank" rel="noopener noreferrer" class="yt-ext">
-            <span>Watch on YouTube</span>
-            {SVG_EXT}
-          </a>
-        </div>
-        <h2 class="yt-title">Prefer to watch first? Get the strategy, trade-offs &amp; 3-calculator tour in 5 minutes</h2>
-        <p class="yt-desc">
-          Narrated by <strong>Kanchana Patlolla</strong> — why open weights run 56% of tokens at 14% of spend, hidden valuation &amp; MAU license cliffs, the <strong>73% GPU utilization rule</strong>, and a guided tour of all three interactive tools below:
-        </p>
-        <div class="yt-chapters" role="group" aria-label="Video chapters">
-          <button type="button" class="yt-chap-btn" data-start="0"><span class="yt-chap-time">0:00</span><span class="yt-chap-lbl">56% / 14% Shift</span></button>
-          <button type="button" class="yt-chap-btn" data-start="40"><span class="yt-chap-time">0:40</span><span class="yt-chap-lbl">Why Leaders Care</span></button>
-          <button type="button" class="yt-chap-btn" data-start="71"><span class="yt-chap-time">1:11</span><span class="yt-chap-lbl">License &amp; Data Traps</span></button>
-          <button type="button" class="yt-chap-btn" data-start="116"><span class="yt-chap-time">1:56</span><span class="yt-chap-lbl">ADK &amp; System 1</span></button>
-          <button type="button" class="yt-chap-btn" data-start="151"><span class="yt-chap-time">2:31</span><span class="yt-chap-lbl">73% GPU Rule</span></button>
-          <button type="button" class="yt-chap-btn" data-start="192"><span class="yt-chap-time">3:12</span><span class="yt-chap-lbl">3 Live Calculators</span></button>
-        </div>
-      </div>
     </section>
 
     <!-- 01 · ARCHITECTURAL STRATEGY: 5 QUESTIONS -->
@@ -3229,20 +3102,11 @@ HTML_TEMPLATE = f"""<!DOCTYPE html>
 
   // 1. 5-MINUTE YOUTUBE EXPLAINER PLAYER (Safe DOM APIs only)
   const YT_ID = "qcz1GhjCBOw";
-  function playExplainerAt(startSec, shouldScroll, activeBtn) {{
+  function playExplainerAt(startSec, shouldScroll) {{
     const safeStart = Math.max(0, Math.min(300, Math.floor(Number(startSec) || 0)));
     const spot = document.getElementById("video-briefing");
     if (shouldScroll && spot) {{
       spot.scrollIntoView({{ behavior: "smooth", block: "center" }});
-    }}
-    document.querySelectorAll(".yt-chap-btn").forEach(function (b) {{
-      b.classList.remove("active");
-    }});
-    if (activeBtn) {{
-      activeBtn.classList.add("active");
-    }} else if (safeStart === 0) {{
-      const firstBtn = document.querySelector(".yt-chap-btn");
-      if (firstBtn) firstBtn.classList.add("active");
     }}
 
     let originStr = "";
@@ -3258,7 +3122,6 @@ HTML_TEMPLATE = f"""<!DOCTYPE html>
 
     const stage = document.getElementById("yt-player-stage");
     if (!stage) return;
-    if (spot) spot.classList.add("is-playing");
 
     const iframe = document.createElement("iframe");
     iframe.setAttribute(
@@ -3274,21 +3137,16 @@ HTML_TEMPLATE = f"""<!DOCTYPE html>
 
   const posterTrigger = document.getElementById("yt-poster-trigger");
   if (posterTrigger) {{
-    posterTrigger.addEventListener("click", function () {{ playExplainerAt(0, false, null); }});
+    posterTrigger.addEventListener("click", function () {{ playExplainerAt(0, false); }});
   }}
   const heroVideoBtn = document.getElementById("hero-video-btn");
   if (heroVideoBtn) {{
-    heroVideoBtn.addEventListener("click", function () {{ playExplainerAt(0, true, null); }});
+    heroVideoBtn.addEventListener("click", function () {{ playExplainerAt(0, true); }});
   }}
   const seriesP1Play = document.getElementById("series-p1-play");
   if (seriesP1Play) {{
-    seriesP1Play.addEventListener("click", function () {{ playExplainerAt(0, true, null); }});
+    seriesP1Play.addEventListener("click", function () {{ playExplainerAt(0, true); }});
   }}
-  document.querySelectorAll(".yt-chap-btn").forEach(function (btn) {{
-    btn.addEventListener("click", function () {{
-      playExplainerAt(btn.getAttribute("data-start"), false, btn);
-    }});
-  }});
 
   // 2. FINOPS 73% DUTY-CYCLE BREAK-EVEN CALCULATOR
   const tokenSlider = document.getElementById("token-slider");
