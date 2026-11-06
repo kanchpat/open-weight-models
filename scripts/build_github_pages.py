@@ -121,7 +121,7 @@ for slug, title, surface, desc in MODULES:
     with open(os.path.join(mdir, "README.md"), "w", encoding="utf-8") as f:
         f.write(
             f"# {title}\n\n"
-            f"> **Authored & Built by:** Kanchana Patlolla & Anusha Sabbineni · **With guidance from:** Alan Blount  \n"
+            f"> **Authored & Built by:** Kanchana Patlolla & Anusha Sabbineni  \n"
             f"> **⚠️ Unofficial Google Guide:** Independent practitioner guide — not an officially supported Google product or official Google Cloud documentation. Views expressed are the authors' own.\n\n"
             f"**Stack & Models:** {surface}\n\n"
             f"## Overview\n{desc}\n\n"
@@ -850,12 +850,6 @@ HTML_TEMPLATE = f"""<!DOCTYPE html>
     font-weight: 600;
     color: var(--on-surface);
   }}
-  .author-row.guidance {{
-    padding-top: 9px;
-    border-top: 1px solid var(--outline-variant);
-    color: var(--on-surface-variant);
-    font-weight: 500;
-  }}
   .avatar-badge {{
     width: 25px;
     height: 25px;
@@ -869,7 +863,6 @@ HTML_TEMPLATE = f"""<!DOCTYPE html>
   }}
   .av-kp {{ background: var(--coral); color: #FFFFFF; }}
   .av-as {{ background: var(--forest); color: var(--amber); }}
-  .av-ab {{ background: var(--plum); color: #FFFFFF; }}
 
   /* =========================================================
      3. MAIN WORKBENCH & HERO SECTION
@@ -2143,7 +2136,7 @@ HTML_TEMPLATE = f"""<!DOCTYPE html>
 <aside class="unofficial-banner" role="note" aria-label="Unofficial Practitioner Guide Disclaimer">
   <div class="unofficial-inner">
     <span class="unofficial-strong">{SVG_SHIELD} Unofficial Google Cloud Practitioner Guide</span>
-    <span>· Authored by <strong>Kanchana Patlolla</strong> &amp; <strong>Anusha Sabbineni</strong>, with guidance from <strong>Alan Blount</strong>. Views are independent practitioner research — not an official Google product.</span>
+    <span>· Authored by <strong>Kanchana Patlolla</strong> &amp; <strong>Anusha Sabbineni</strong>. Views are independent practitioner research — not an official Google product.</span>
   </div>
 </aside>
 
@@ -2203,7 +2196,6 @@ HTML_TEMPLATE = f"""<!DOCTYPE html>
       <div class="author-list">
         <div class="author-row"><span class="avatar-badge av-kp">KP</span><span>Kanchana Patlolla</span></div>
         <div class="author-row"><span class="avatar-badge av-as">AS</span><span>Anusha Sabbineni</span></div>
-        <div class="author-row guidance"><span class="avatar-badge av-ab">AB</span><span>Guidance: Alan Blount</span></div>
       </div>
     </div>
   </aside>
@@ -2795,7 +2787,7 @@ HTML_TEMPLATE = f"""<!DOCTYPE html>
           <span>Open-Weights Enterprise Architect Playbook</span>
         </div>
         <div class="footer-links">
-          <span>Authored by <strong>Kanchana Patlolla</strong> &amp; <strong>Anusha Sabbineni</strong> · Guidance from <strong>Alan Blount</strong></span>
+          <span>Authored by <strong>Kanchana Patlolla</strong> &amp; <strong>Anusha Sabbineni</strong></span>
           <a href="https://github.com/kanchpat/open-weight-models" target="_blank" rel="noopener noreferrer">GitHub (Apache 2.0) ↗</a>
           <a href="https://youtu.be/qcz1GhjCBOw" target="_blank" rel="noopener noreferrer">YouTube Overview ↗</a>
         </div>

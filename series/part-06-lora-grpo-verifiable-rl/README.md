@@ -1,6 +1,6 @@
 # Part 6 (Dec 4, 2026): Beyond the Prompt Tax — LoRA, <$100 Verifiable RL (GRPO), and Multi-LoRA on Vertex AI
 
-> **Authored & Built by:** Kanchana Patlolla & Anusha Sabbineni · **With guidance from:** Alan Blount  
+> **Authored & Built by:** Kanchana Patlolla & Anusha Sabbineni  
 > **⚠️ Unofficial Google Guide:** Independent practitioner guide — not an officially supported Google product or official Google Cloud documentation. Views expressed are the authors' own.
 
 **Stack & Models:** Vertex AI Training + OpenMaaS Multi-LoRA + `SkyRL` GRPO

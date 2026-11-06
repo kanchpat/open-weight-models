@@ -1,6 +1,6 @@
 # Part 3 (Nov 13, 2026): 'Don't Train the Model, Evolve the Harness' — Multi-Model Routing & Verification with ADK
 
-> **Authored & Built by:** Kanchana Patlolla & Anusha Sabbineni · **With guidance from:** Alan Blount  
+> **Authored & Built by:** Kanchana Patlolla & Anusha Sabbineni  
 > **⚠️ Unofficial Google Guide:** Independent practitioner guide — not an officially supported Google product or official Google Cloud documentation. Views expressed are the authors' own.
 
 **Stack & Models:** Google ADK + OpenMaaS + `System 1` Single-Pass Verification

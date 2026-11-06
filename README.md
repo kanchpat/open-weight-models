@@ -8,7 +8,7 @@ An interactive enterprise architecture playbook, zero-dependency FinOps & licens
 [![Unofficial Guide](https://img.shields.io/badge/Notice-Unofficial%20Practitioner%20Guide-D97706)](#disclaimer--attribution)
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-16A34A)](LICENSE)
 
-> **✍️ Authored & Built by:** **Kanchana Patlolla** & **Anusha Sabbineni** · **With guidance from:** **Alan Blount**  
+> **✍️ Authored & Built by:** **Kanchana Patlolla** & **Anusha Sabbineni**  
 > **⚠️ Unofficial Google Guide Disclaimer:** Independent community & practitioner resource — **not** an officially supported Google product, official Google Cloud documentation, or legal advice. Views and FinOps estimates are strictly the authors' own ([full notice](#disclaimer--attribution)).
 
 ### ▶️ Prefer to Watch First? 5-Minute Enterprise Architect's Overview
@@ -175,6 +175,6 @@ Licensed under the **Apache License 2.0** — see [`LICENSE`](LICENSE) for full 
 
 ## Disclaimer & Attribution
 
-- **Authors & Contributors:** Authored and built by **Kanchana Patlolla** and **Anusha Sabbineni**, with guidance from **Alan Blount**.
+- **Authors & Contributors:** Authored and built by **Kanchana Patlolla** and **Anusha Sabbineni**.
 - **Unofficial Google Guide:** This repository (`kanchpat/open-weight-models`) and companion website (`openweights.cloudrace.info`) are an **unofficial community & practitioner guide**. **This is not an officially supported Google product**, nor is it an official Google or Google Cloud publication, documentation set, or endorsement.
 - **No Legal or Financial Advice:** All opinions, architectural recommendations, FinOps cost estimates, and model licensing summaries are strictly the authors' own and are provided *as-is* for informational planning only. Always consult qualified legal counsel before deploying open-weight models in commercial production.
