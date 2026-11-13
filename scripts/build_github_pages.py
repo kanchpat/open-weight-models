@@ -118,7 +118,11 @@ MODULES = [
 for slug, title, surface, desc in MODULES:
     mdir = os.path.join(SERIES_DIR, slug)
     os.makedirs(mdir, exist_ok=True)
-    with open(os.path.join(mdir, "README.md"), "w", encoding="utf-8") as f:
+    readme_path = os.path.join(mdir, "README.md")
+    if os.path.exists(readme_path):
+        # Never overwrite a module README: published parts carry hand-written lab and video links.
+        continue
+    with open(readme_path, "w", encoding="utf-8") as f:
         f.write(
             f"# {title}\n\n"
             f"> **Authored & Built by:** Kanchana Patlolla & Anusha Sabbineni  \n"
@@ -2711,11 +2715,15 @@ HTML_TEMPLATE = f"""<!DOCTYPE html>
             <div class="sc-date">Part 2 · Nov 13, 2026</div>
             <h3 class="sc-title">Start Serverless: Zero-Ops Open-Weight Agents on Vertex AI OpenMaaS</h3>
             <div class="sc-stack">series/part-02-openmaas-serverless/</div>
-            <p class="sc-desc">Why OpenMaaS PayGo ($0.907/1M) beats dedicated self-deploy ($1.29/1M) by 1.42× below 73% utilization + building a tool-calling Gemma 4 / Qwen agent with $0 idle burn.</p>
+            <p class="sc-desc">Gemma 4 as a managed API, with nothing to deploy: send a photo and get bounding boxes back, run a bounded tool-calling agent, and plot its results on a map. Bonus: TranslateGemma on your own GPU.</p>
           </div>
           <div class="sc-foot">
-            <span style="color:var(--on-surface-variant);">Unlocks Friday Nov 13 · cURL + Vertex SDK</span>
-            <a href="https://github.com/kanchpat/open-weight-models/tree/main/series/part-02-openmaas-serverless" target="_blank" rel="noopener noreferrer" style="font-weight:700;">Module ↗</a>
+            <span style="color:var(--on-surface-variant);">Live · Video (4:09) + 2 Colab notebooks</span>
+            <span>
+              <a href="https://youtu.be/sMO3p7_hq7g" target="_blank" rel="noopener noreferrer" style="font-weight:700;">YouTube ↗</a>
+              &nbsp;·&nbsp;
+              <a href="https://github.com/kanchpat/open-weight-models/tree/main/series/part-02-openmaas-serverless" target="_blank" rel="noopener noreferrer" style="font-weight:700;">Module ↗</a>
+            </span>
           </div>
         </article>
 
