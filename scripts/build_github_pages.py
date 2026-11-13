@@ -2710,15 +2710,15 @@ HTML_TEMPLATE = f"""<!DOCTYPE html>
           </div>
         </article>
 
-        <article class="sc-card" id="series-part-2">
+        <article class="sc-card sc-live" id="series-part-2">
           <div>
-            <div class="sc-date">Part 2 · Nov 13, 2026</div>
+            <div class="sc-date">Part 2 · Nov 13, 2026 · Live Now</div>
             <h3 class="sc-title">Start Serverless: Zero-Ops Open-Weight Agents on Vertex AI OpenMaaS</h3>
             <div class="sc-stack">series/part-02-openmaas-serverless/</div>
             <p class="sc-desc">Gemma 4 as a managed API, with nothing to deploy: send a photo and get bounding boxes back, run a bounded tool-calling agent, and plot its results on a map. Bonus: TranslateGemma on your own GPU.</p>
           </div>
           <div class="sc-foot">
-            <span style="color:var(--on-surface-variant);">Live · Video (4:09) + 2 Colab notebooks</span>
+            <button type="button" class="sc-btn-play" id="series-p2-play">▶ Play Video (4:09)</button>
             <span>
               <a href="https://youtu.be/sMO3p7_hq7g" target="_blank" rel="noopener noreferrer" style="font-weight:700;">YouTube ↗</a>
               &nbsp;·&nbsp;
@@ -2821,7 +2821,13 @@ HTML_TEMPLATE = f"""<!DOCTYPE html>
 
   // 1. 5-MINUTE YOUTUBE EXPLAINER PLAYER (Safe DOM APIs only)
   const YT_ID = "qcz1GhjCBOw";
+  const YT_TITLE = "Open-Weight AI Models for Enterprise Architects — 5-Minute Explainer";
+  const YT_ID_PART2 = "sMO3p7_hq7g";
+  const YT_TITLE_PART2 = "Start Serverless: A Gemma 4 Agent with No GPU — Open-Weight Models Part 2";
   function playExplainerAt(startSec, shouldScroll) {{
+    playVideoAt(YT_ID, YT_TITLE, startSec, shouldScroll);
+  }}
+  function playVideoAt(YT_ID, YT_TITLE, startSec, shouldScroll) {{
     const safeStart = Math.max(0, Math.min(300, Math.floor(Number(startSec) || 0)));
     const spot = document.getElementById("video-briefing");
     if (shouldScroll && spot) {{
@@ -2847,7 +2853,7 @@ HTML_TEMPLATE = f"""<!DOCTYPE html>
       "src",
       "https://www.youtube-nocookie.com/embed/" + YT_ID + "?autoplay=1&rel=0&modestbranding=1&playsinline=1&start=" + String(safeStart)
     );
-    iframe.setAttribute("title", "Open-Weight AI Models for Enterprise Architects — 5-Minute Explainer");
+    iframe.setAttribute("title", YT_TITLE);
     iframe.setAttribute("allow", "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share");
     iframe.setAttribute("referrerpolicy", "strict-origin-when-cross-origin");
     iframe.setAttribute("allowfullscreen", "");
@@ -2865,6 +2871,10 @@ HTML_TEMPLATE = f"""<!DOCTYPE html>
   const seriesP1Play = document.getElementById("series-p1-play");
   if (seriesP1Play) {{
     seriesP1Play.addEventListener("click", function () {{ playExplainerAt(0, true); }});
+  }}
+  const seriesP2Play = document.getElementById("series-p2-play");
+  if (seriesP2Play) {{
+    seriesP2Play.addEventListener("click", function () {{ playVideoAt(YT_ID_PART2, YT_TITLE_PART2, 0, true); }});
   }}
 
   // 2. FINOPS 73% DUTY-CYCLE BREAK-EVEN CALCULATOR
