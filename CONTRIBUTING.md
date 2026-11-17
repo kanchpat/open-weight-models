@@ -13,17 +13,17 @@ For major structural changes or new interactive calculators, please [open an iss
 
 ## How to Make Changes
 
-> **Important:** `docs/index.html` is generated from `whitepaper/enterprise-playbook.md` and `scripts/build_github_pages.py`. Never hand-edit `docs/index.html` directly, or the next build will overwrite your edits.
+> **Important:** `docs/index.html` is generated from `site/src/` by `scripts/build_course_site.py`. Never hand-edit `docs/index.html` directly, or the next build will overwrite your edits.
 
 1. Fork and clone the repository (requires **Python 3.10+**, standard library only):
    ```bash
    git clone https://github.com/kanchpat/open-weight-models.git
    cd open-weight-models
    ```
-2. Edit [`whitepaper/enterprise-playbook.md`](whitepaper/enterprise-playbook.md) (for playbook prose/tables) or [`scripts/build_github_pages.py`](scripts/build_github_pages.py) (for interactive calculators, model cards, or UI layout).
+2. Edit [`whitepaper/enterprise-playbook.md`](whitepaper/enterprise-playbook.md) (for playbook prose/tables) and [`site/src/course.js`](site/src/course.js) (for lessons, labs and tool data), or the other files in `site/src/` (for UI layout).
 3. Regenerate `docs/index.html` and verify locally:
    ```bash
-   python3 scripts/build_github_pages.py
+   python3 scripts/build_course_site.py
    python3 -m http.server 8000 --directory docs
    ```
 4. Open `http://localhost:8000` (`Cmd/Ctrl + Shift + R` to bypass browser cache) and verify:

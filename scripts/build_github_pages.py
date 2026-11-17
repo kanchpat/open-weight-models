@@ -3172,7 +3172,8 @@ HTML_TEMPLATE = f"""<!DOCTYPE html>
 </html>
 """
 
-out_html_path = os.path.join(DOCS_DIR, "index.html")
+# The home page is now built by scripts/build_course_site.py; this legacy single-page site is kept at /classic.html.
+out_html_path = os.path.join(DOCS_DIR, "classic.html")
 with open(out_html_path, "w", encoding="utf-8") as f:
     f.write(HTML_TEMPLATE)
 

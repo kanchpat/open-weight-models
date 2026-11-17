@@ -73,16 +73,15 @@ To read the standalone whitepaper without launching a browser, open [`whitepaper
 
 ## Development
 
-Edit [`whitepaper/enterprise-playbook.md`](whitepaper/enterprise-playbook.md) (playbook prose/tables) or [`scripts/build_github_pages.py`](scripts/build_github_pages.py) (calculators, model directory, and UI shell), then rebuild `docs/index.html` and start a local dev server:
+The home page is an interactive course built from [`site/src/`](site/src/): edit [`course.js`](site/src/course.js) (lessons, labs, tool data; hand-written from the playbook, so update it when playbook figures change), or `app.js`, `style.css` and `index.tpl.html` (UI shell). Then rebuild `docs/index.html` and start a local dev server:
 
 ```bash
 git clone https://github.com/kanchpat/open-weight-models.git
 cd open-weight-models
 
-# Rebuild docs/index.html + series module indexes from whitepaper/enterprise-playbook.md
-python3 scripts/build_github_pages.py
-# -> Scaffolded repo files and README.
-# -> Built 3-pane Claude-Docs-style GitHub Pages prototype at: .../docs/index.html
+# Rebuild docs/index.html (the interactive course)
+python3 scripts/build_course_site.py
+# -> Built interactive course site at: .../docs/index.html
 
 # Preview locally on port 8000
 python3 -m http.server 8000 --directory docs
@@ -136,7 +135,8 @@ open-weight-models/
 ├── whitepaper/
 │   └── enterprise-playbook.md                  # Canonical Markdown source of the Enterprise Playbook
 ├── scripts/
-│   └── build_github_pages.py                   # Compiles whitepaper + assets into docs/index.html
+│   ├── build_course_site.py                    # Compiles site/src + playbook sources into docs/index.html
+│   └── build_github_pages.py                   # Legacy single-page site, now written to docs/classic.html
 └── series/                                     # 7-Part Weekly Code & Video Series (Nov–Dec 2026)
     ├── part-02-openmaas-serverless/            # Nov 13: Zero-Ops OpenMaaS Serverless Agents ($0.907/1M)
     ├── part-03-adk-harness-system1/            # Nov 13: ADK Multi-Model Routing & System 1 Rubric Gates
@@ -151,8 +151,8 @@ open-weight-models/
 Maintainers deploy updates automatically to GitHub Pages (`openweights.cloudrace.info` via `CNAME` → `kanchpat.github.io`) through [`.github/workflows/pages.yml`](.github/workflows/pages.yml) (no npm, PyPI, or container registry publish step applies to the documentation hub):
 
 ```bash
-python3 scripts/build_github_pages.py
-git add whitepaper/enterprise-playbook.md scripts/build_github_pages.py docs/index.html docs/CNAME series/
+python3 scripts/build_course_site.py
+git add whitepaper/enterprise-playbook.md site/ scripts/ docs/index.html series/
 git commit -m "docs: update playbook and rebuild GitHub Pages bundle"
 git push origin main
 ```
@@ -161,15 +161,15 @@ Every push to `main` packages `docs/` as a Pages artifact and deploys live to **
 
 ## Troubleshooting
 
-- **Edits to `docs/index.html` disappeared after rebuild:** `docs/index.html` is compiled output. Edit [`whitepaper/enterprise-playbook.md`](whitepaper/enterprise-playbook.md) or [`scripts/build_github_pages.py`](scripts/build_github_pages.py) and re-run `python3 scripts/build_github_pages.py`.
-- **Browser still shows an older build:** Because `docs/index.html` embeds Base64 diagrams into a single `~6.4 MB` HTML artifact, hard-refresh with **`Cmd + Shift + R`** (macOS) or **`Ctrl + Shift + R`** (Windows/Linux) after rebuilding or deploying.
+- **Edits to `docs/index.html` disappeared after rebuild:** `docs/index.html` is compiled output. Edit the files in [`site/src/`](site/src/) and re-run `python3 scripts/build_course_site.py`.
+- **Browser still shows an older build:** Hard-refresh with **`Cmd + Shift + R`** (macOS) or **`Ctrl + Shift + R`** (Windows/Linux) after rebuilding or deploying.
 - **`OSError: [Errno 98] Address already in use` on port `8000`:** Pass another free port, e.g. `python3 -m http.server 8080 --directory docs`.
 
 ## Contributing
 
 Pull requests and issues are welcome—especially for newly released open-weight models, updated commercial/MAU license thresholds, FinOps pricing shifts, and public enterprise case studies. For major structural changes, please [open an issue](https://github.com/kanchpat/open-weight-models/issues) first to discuss scope.
 
-See [`CONTRIBUTING.md`](CONTRIBUTING.md) for the edit → `build_github_pages.py` → local preview workflow.
+See [`CONTRIBUTING.md`](CONTRIBUTING.md) for the edit → `build_course_site.py` → local preview workflow.
 
 ## License
 
