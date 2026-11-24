@@ -18,6 +18,8 @@ An interactive enterprise architecture playbook, zero-dependency FinOps & licens
 > **🎬 [Watch on YouTube (5:01)](https://youtu.be/qcz1GhjCBOw)** — Jump by chapter: [`0:00` 56% / 14% Shift](https://youtu.be/qcz1GhjCBOw?t=0) · [`0:40` Why Care](https://youtu.be/qcz1GhjCBOw?t=40) · [`1:11` License Traps](https://youtu.be/qcz1GhjCBOw?t=71) · [`1:56` ADK & System 1](https://youtu.be/qcz1GhjCBOw?t=116) · [`2:31` 73% GPU Rule](https://youtu.be/qcz1GhjCBOw?t=151) · [`3:12` 3 Live Calculators](https://youtu.be/qcz1GhjCBOw?t=192)
 
 > **New · Part 2 (4:09):** [Start Serverless: a Gemma 4 agent with no GPU](https://youtu.be/sMO3p7_hq7g) · [notebooks](series/part-02-openmaas-serverless/)
+>
+> **New · Part 3:** [Evolve the Harness: ADK multi-model routing & System 1 verification](series/part-03-adk-harness-system1/) · [Colab notebook](https://colab.research.google.com/github/kanchpat/open-weight-models/blob/main/series/part-03-adk-harness-system1/adk_harness_routing_system1.ipynb)
 
 <details>
 <summary><strong>🖼️ View Google Cloud × Open-Weight AI Reference Stack Overview</strong></summary>
